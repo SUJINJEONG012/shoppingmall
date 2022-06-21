@@ -67,7 +67,9 @@ body {
     padding:15px 0;
     
 }
-.main_header .logo {}
+.main_header .logo {
+    padding-right: 40px;
+}
 
 .main_header .logo a {
     font-size: 30px;
@@ -77,7 +79,7 @@ body {
 
 .main_header .header_wrap {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -91,14 +93,14 @@ body {
 .main_header .header_wrap .header-menu ul li {
     position: relative;
     background-color: transparent;
-    padding: 10px 30px;
+    padding: 10px 20px;
     cursor: pointer;
 }
 
 
 
 .main_header .header_wrap .header-menu ul li a {
-    font-size: 18px;
+    font-size: 13px;
 }
 .main_header .header_wrap .header-menu ul li.active:before{
     content:"";
@@ -108,7 +110,7 @@ body {
     clear:both;
     width:8px;
     height: 8px;
-    background-color: tomato;
+    /* background-color: tomato; */
     border-radius: 50%;
 
 }

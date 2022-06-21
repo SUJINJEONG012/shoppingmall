@@ -9,7 +9,7 @@
     position: relative;
     padding:80px 0;
     background:transparent;
-    height: 800px;
+    
 }
 .main-visual{
     
@@ -41,3 +41,62 @@
 
 
 /* ========================= main-banner title ============================= */
+.thumbnail-wrap{
+    /* margin:150px; */
+    z-index:99;
+}
+.thumbnail-title-wrap .thumbnail-title{
+margin:40px 0;
+text-align: center;
+}
+.thumbnail-title{
+    font-size:30px;
+}
+
+.thumbnail-item{
+    position: relative;
+    width:100%;
+    display: flex;
+    
+}
+
+
+.thumbnail-wrap .thumbnail-list{
+    position: relative;
+    width:33.3%;
+    margin-right: 1%;
+}
+
+.thumbnail-wrap .thumbnail-over-text{
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  background:rgba(255,255,255,0);
+  opacity: 0;
+  transition:opacity 0.3s;
+  cursor: pointer;
+  padding:20px;
+}
+
+.thumbnail-wrap .thumbnail-over-text ul{}
+.thumbnail-wrap .thumbnail-over-text ul li{padding-bottom: 10px;}
+
+
+
+.thumbnail-wrap .thumbnail-over-text .thumbnail-name{
+    
+}
+
+.thumbnail-wrap .thumbnail-over-text .thumbnail-price{
+    
+}
+
+.thumbnail-wrap .thumbnail-over-text li{
+    color:#fff;
+}
+
+.thumbnail-wrap .thumbnail-list:hover .thumbnail-over-text{
+    opacity: 1;
+}
