@@ -1,30 +1,57 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>쇼핑몰 디자인</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/layout.css">
+
+    <script src="./js/main.js" defer></script>
 </head>
+
 <body>
 
-    <header class="main_header">
 
-        <h1 class="logo"><a href="#">LOGO</a></h1>
-        <nav>
-            <ul>
-                <li><a href="">About</a></li>
-                <li><a href="">Shop</a></li>
-                <li><a href="">Notice</a></li>
-            </ul>
-        </nav>
+    <div id="wrap">
 
-        장바구니(카트아이콘), 마이페이지  로그아웃
-        로그인 회원가입
-        
+        <!-- header start -->
+        <header class="main_header">
 
-        
-        <nav>
+            <div class="inner">
+                <!--로그인 전  -->
+                <div class="header_side">
+                    <ul>
+                        <li><a href="">로그인</a></li>
+                        <li><a href="">회원가입</a></li>
+                    </ul>
+                </div>
+
+
+                <!--로그인 후
+                장바구니(카트아이콘), 마이페이지 로그아웃  -->
+
+
+
+                <div class="header_wrap">
+                    <h1 class="logo"><a href="#" lang="en">SLOM`ANGE</a></h1>
+                    <nav class="header-menu">
+                        <ul class="">
+                            <li class="menu-list"><a href="./page/about.html" lang="en">About</a></li>
+                            <li class="menu-list"><a href="./page/shop.html" lang="en">Shop</a></li>
+                            <li class="menu-list"><a href="./page/notice.html" lang="en" s>Notice</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+
+                <!-- <nav>
             <ul>
                 <li>
                     <a href="">티셔츠</a>
@@ -44,12 +71,13 @@
                     </ul>
                 </li>
                 <li><a href="">후디</a>
-                <ul>
-                    <li><a href="">전체</a></li>
-                    <li><a href="">풀오버</a></li>
-                    <li><a href="">집업</a></li>
-                </ul></li>
-                
+                    <ul>
+                        <li><a href="">전체</a></li>
+                        <li><a href="">풀오버</a></li>
+                        <li><a href="">집업</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="">아우터</a>
                     <ul>
                         <li><a href="">전체</a></li>
@@ -61,79 +89,96 @@
                     </ul>
                 </li>
                 <li><a href="">바지</a>
-                    <li><a href="">전체</a></li>
-                    <li><a href="">슬랙스</a></li>
-                    <li><a href="">트레이닝</a></li>
-                    <li><a href="">쇼츠</a></li>
-                    <li><a href="">데님</a></li>
+                <li><a href="">전체</a></li>
+                <li><a href="">슬랙스</a></li>
+                <li><a href="">트레이닝</a></li>
+                <li><a href="">쇼츠</a></li>
+                <li><a href="">데님</a></li>
                 </li>
 
                 <li><a href="">니트</a>
-                    <li><a href="">전체</a></li>
-                    <li><a href="">풀오버</a></li>
-                    <li><a href="">베스트</a></li>
-                    <li><a href="">가디건</a></li>
-                    <li><a href="">터틀넥</a></li>
+                <li><a href="">전체</a></li>
+                <li><a href="">풀오버</a></li>
+                <li><a href="">베스트</a></li>
+                <li><a href="">가디건</a></li>
+                <li><a href="">터틀넥</a></li>
                 </li>
 
                 <li><a href="">원피스/스커트</a>
-                    <li><a href="">전체</a></li>
-                    <li><a href="">원피스</a></li>
-                    <li><a href="">스커트</a></li>
-                    
+                <li><a href="">전체</a></li>
+                <li><a href="">원피스</a></li>
+                <li><a href="">스커트</a></li>
+
                 </li>
 
                 <li><a href="">셔츠/블라우스</a>
-                    <li><a href="">전체</a></li>
-                    <li><a href="">셔츠</a></li>
-                    <li><a href="">옥스퍼드</a></li>
-                    <li><a href="">블라우스</a></li>
-                
+                <li><a href="">전체</a></li>
+                <li><a href="">셔츠</a></li>
+                <li><a href="">옥스퍼드</a></li>
+                <li><a href="">블라우스</a></li>
+
                 </li>
 
 
                 <li><a href="">이너웨어</a>
-                    <li><a href="">전체</a></li>
-                    <li><a href="">드로즈</a></li>
-                    <li><a href="">라운지웨어</a></li>
-                    <li><a href="">브라</a></li>
-                    <li><a href="">스윔웨어</a></li>
-                    <li><a href="">팬티</a></li>
-                    <li><a href="">스포츠웨어</a></li>
-                </li> 
+                <li><a href="">전체</a></li>
+                <li><a href="">드로즈</a></li>
+                <li><a href="">라운지웨어</a></li>
+                <li><a href="">브라</a></li>
+                <li><a href="">스윔웨어</a></li>
+                <li><a href="">팬티</a></li>
+                <li><a href="">스포츠웨어</a></li>
+                </li>
             </ul>
-        </nav>
-
-    </header>
-
-    <main class="main-cotainer">
-        
-        <div class="">
-        <h2>베스트상품</h2>
-        <div></div>
-        <div></div>
-        <div></div>
-        </div>
-
-        <div class="main_banner">
-           
-        </div>
-
-        <div class="">
-            <h2>신상품</h2>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-
-    </main>
+        </nav> -->
+            </div>
+            <!-- header -inner  end -->
+        </header>
 
 
-    <footer class="main_footer">
-        공지사항 , 
-        고객센터 2000,000
-        점심시간
-    </footer>
-    
+
+        <!-- main -->
+        <main class="main-cotainer">
+
+
+            <!-- main-visual -->
+            <div class="main-visual">
+                <img src="" alt="">
+            </div>
+
+
+            <div class="">
+                <h2>베스트상품</h2>
+                <div><img src="" alt=""></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="main_banner">
+
+            </div>
+
+            <div class="">
+                <h2>신상품</h2>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+        </main>
+
+
+        <footer class="main_footer">
+            공지사항 ,
+            고객센터 2000,000
+            점심시간
+        </footer>
+
+
+
+    </div>
+    <!-- wrap end -->
 </body>
+
+
 </html>

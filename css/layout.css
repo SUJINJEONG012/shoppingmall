@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+/* ========================= common ============================= */
+
+body {
+
+    position: relative;
+    line-height: 1.45;
+    word-break: keep-all;
+    font-family: "Montserrat", "Noto Sans KR", sans-serif, "맑은 고딕", "Nanum Gothic", "나눔 고딕", "돋움", dotum, sans-serif;
+
+}
+
+
+
+#wrap {
+    position: relative;
+}
+
+
+/* ========================= header ============================= */
+.main_header {
+    position: fixed;
+    width: 100%;
+    background-color: #f9f9f9;
+
+}
+
+
+.main_header .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main_header .header_side {}
+
+.main_header .header_side ul {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 9
+}
+
+.main_header .header_side ul li {
+    margin-right: 20px;
+}
+
+.main_header .header_side ul li a {
+    font-size: 13px;
+    color: #5a5a5a;
+}
+
+.main_header .logo {}
+
+.main_header .logo a {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+
+.main_header .header_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.main_header .header_wrap .header-menu ul {
+    display: flex;
+    align-items: flex-start;
+
+}
+
+.main_header .header_wrap .header-menu ul li {
+    background-color: transparent;
+    padding: 10px 30px;
+}
+
+.main_header .header_wrap .header-menu ul li a {
+    font-size: 18px;
+}
+
+
+/* ========================= footer ============================= */
