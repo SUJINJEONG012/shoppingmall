@@ -17,6 +17,11 @@ body {
     position: relative;
 }
 
+.inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 
 .main-cotainer{
     position: relative;
@@ -34,10 +39,7 @@ body {
 }
 
 
-.main_header .inner {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+
 
 .main_header .header_top {
     border-bottom:1px solid #e9e9e9;
