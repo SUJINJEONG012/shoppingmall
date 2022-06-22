@@ -112,4 +112,12 @@
     position: relative;
 }
 
-.main-banner
+.main-banner .banner-wrap {}
+
+.main-baImg {}
+
+.main-baTit {}
+
+.main-baTit h2 {}
+
+.main-baTit h2 strong {}
