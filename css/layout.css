@@ -7,13 +7,17 @@ body {
     line-height: 1.45;
     word-break: keep-all;
     font-family: "Montserrat", "Noto Sans KR", sans-serif, "맑은 고딕", "Nanum Gothic", "나눔 고딕", "돋움", dotum, sans-serif;
-    background:#f9f9f9;
+    background: #f9f9f9;
 }
-
 
 
 #wrap {
     position: relative;
+}
+
+.container {
+    margin-top: 150px;
+
 }
 
 .inner {
@@ -30,13 +34,13 @@ body {
 /* ========================= header ============================= */
 .main_header {
     position: fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: #f9f9f9; 
+    background-color: #f9f9f9;
     /* height: 80px;*/
     z-index: 2;
-    
+
 
 }
 

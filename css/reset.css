@@ -266,12 +266,20 @@ textarea {
 }
 
 input {
+<<<<<<< HEAD
     -moz-appearance: none;
     appearance: none;
     border-radius: 0;
     border-radius: 0;
     border: 0;
     background: transparent
+=======
+    /* -moz-appearance: none;
+     -webkit-appearance: none;
+    appearance: none; */
+    border-radius: 0;
+
+>>>>>>> 437579a3205ac5404e44d4e3d9aeb7282bb565e5
 }
 
 button {
@@ -279,13 +287,10 @@ button {
     padding: 0;
     border: 0;
     background: 0;
-    outline: none
+    outline: none;
+    /* -webkit-appearance: none; */
 }
 
-button,
-input {
-    -webkit-appearance: none
-}
 
 a,
 a *,
@@ -327,7 +332,9 @@ input[type=radio] {
     width: 13px;
     height: 13px;
     margin: 0;
-    cursor: pointer
+    cursor: pointer;
+    border: 1px solid #191919;
+    vertical-align: middle;
 }
 
 sup {

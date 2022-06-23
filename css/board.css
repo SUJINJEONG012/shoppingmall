@@ -1,6 +1,7 @@
 /* ===================== 공통 ================= */
 
-.login-wrap {
+.login-wrap,
+.join-wrap {
     position: relative;
     z-index: 1;
 }
@@ -9,6 +10,9 @@
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.fieldset-wrap {
     width: 100%;
     height: 100%;
     display: flex;
@@ -31,3 +35,76 @@
 
 
 /* ===================== 회원가입 ================= */
+
+
+.fieldset-wrap .fieldset {
+    width: 100%;
+    text-align: center;
+}
+
+.fieldset-wrap .flied-title {
+    margin: 20px auto 50px;
+}
+
+.fieldset-wrap .flied-title h2 {
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.fieldset-wrap .flied-input {
+    width: 34%;
+    margin: 20px auto 10px;
+    display: flex;
+    align-items: center;
+}
+
+.fieldset-wrap .flied-input label {
+    width: 70px;
+    text-align: left;
+    padding-right: 40px;
+}
+
+.fieldset-wrap .flied-input input {
+    width: 100%;
+    height: 45px;
+    display: block;
+    border: 1px solid #adadad;
+    padding: 2px 2px 2px 7px;
+    color: #191919;
+}
+
+.fieldset-wrap .flied-btn {
+    width: 34%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.flied-btn .checkbox-text {
+    display: inline-block;
+
+
+}
+
+.chek-save input[type=check] {}
+
+.chek-save .checkbox-text {
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+
+.confirm-btn {
+    margin: 40px auto;
+}
+
+.confirm-btn button {
+    width: 200px;
+    height: 45px;
+    font-size: 16px;
+    background: #191919;
+    color: #fff;
+    border: 0;
+}
