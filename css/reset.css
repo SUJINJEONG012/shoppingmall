@@ -268,7 +268,10 @@ textarea {
 input {
     -moz-appearance: none;
     appearance: none;
-    border-radius: 0
+    border-radius: 0;
+    border-radius: 0;
+    border: 0;
+    background: transparent
 }
 
 button {
