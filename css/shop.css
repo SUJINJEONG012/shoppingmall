@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.category {
+    position: relative;
+    background-color: green;
+}
+
+.category ul {
+    display: flex;
+}
+
+.category ul li {
+    width: 12.5%;
+    text-align: center;
+}
+
+.category ul li a {
+    font-size: 13px;
+}
+
+.category ul .depth-menu {
+    opacity: 0;
+}

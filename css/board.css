@@ -1,9 +1,16 @@
+/* ===================== 공통 ================= */
+
 .login-wrap,
 .join-wrap {
     position: relative;
     z-index: 1;
 }
 
+.fieldset-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 
 .fieldset-wrap {
     width: 100%;
@@ -11,7 +18,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+
 }
+
+.fieldset input {
+    border: 1px solid #565656;
+}
+
+
+.checkbox-text {
+    display: inline-block;
+}
+
+/* ===================== 로그인 ================= */
+
+
+/* ===================== 회원가입 ================= */
+
 
 .fieldset-wrap .fieldset {
     width: 100%;
