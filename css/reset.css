@@ -266,20 +266,11 @@ textarea {
 }
 
 input {
-<<<<<<< HEAD
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 0;
-    border-radius: 0;
-    border: 0;
-    background: transparent
-=======
+
     /* -moz-appearance: none;
      -webkit-appearance: none;
     appearance: none; */
     border-radius: 0;
-
->>>>>>> 437579a3205ac5404e44d4e3d9aeb7282bb565e5
 }
 
 button {
