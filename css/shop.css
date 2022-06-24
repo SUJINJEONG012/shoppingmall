@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.category ul {
+    display: flex;
+}
+
+.category ul .depth-menu {
+    opacity: 0;
+}
