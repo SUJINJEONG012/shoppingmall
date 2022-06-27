@@ -1,6 +1,6 @@
 # 링크
 
-<a href="https://naver.com">네이버</a>
+<a href="https://github.com/SUJINJEONG012/shoppingmall.git">네이버</a>
 
 # 테스트
 
