@@ -1,6 +1,6 @@
 # 링크
 
-<a href="https://github.com/SUJINJEONG012/shoppingmall.git">네이버</a>
+<a href="https://github.com/SUJINJEONG012/shoppingmall.git">현재 작업하고있는 쇼핑몰과 관리자페이지</a>
 
 # 테스트
 
