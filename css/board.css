@@ -56,10 +56,16 @@
     margin: 20px auto 10px;
     display: flex;
     align-items: center;
+    
+}
+.fieldset-wrap .flied-input.testwrap{
+    flex-wrap: wrap;
+    
 }
 
+
 .fieldset-wrap .flied-input label {
-    width: 70px;
+    width: 150px;
     text-align: left;
     padding-right: 40px;
 }
@@ -72,7 +78,6 @@
     padding: 2px 2px 2px 7px;
     color: #191919;
 }
-
 .fieldset-wrap .flied-btn {
     width: 34%;
     margin: 0 auto;
@@ -81,6 +86,16 @@
 
 }
 
+.test1 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.test2 {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+}
 
 .flied-btn .checkbox-text {
     display: inline-block;
