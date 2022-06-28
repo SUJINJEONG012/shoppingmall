@@ -40,6 +40,7 @@
 .fieldset-wrap .fieldset {
     width: 100%;
     text-align: center;
+    margin-top: 120px;
 }
 
 .fieldset-wrap .flied-title {
@@ -56,19 +57,27 @@
     margin: 20px auto 10px;
     display: flex;
     align-items: center;
-    
+
 }
-.fieldset-wrap .flied-input.testwrap{
+
+.fieldset-wrap .flied-input.testwrap {
     flex-wrap: wrap;
-    
+
+}
+
+
+.fieldset-wrap .flied-input .flied-name {
+    padding-right: 35px;
 }
 
 
 .fieldset-wrap .flied-input label {
-    width: 150px;
-    text-align: left;
-    padding-right: 40px;
+
+
+    font-size: 0;
 }
+
+
 
 .fieldset-wrap .flied-input input {
     width: 100%;
@@ -78,6 +87,7 @@
     padding: 2px 2px 2px 7px;
     color: #191919;
 }
+
 .fieldset-wrap .flied-btn {
     width: 34%;
     margin: 0 auto;
@@ -91,6 +101,7 @@
     display: flex;
     align-items: center;
 }
+
 .test2 {
     display: flex;
     width: 100%;
@@ -122,4 +133,11 @@
     background: #191919;
     color: #fff;
     border: 0;
+}
+
+
+.fieldset form {}
+
+.fieldset form .form-title {
+    d
 }
