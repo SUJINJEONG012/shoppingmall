@@ -34,6 +34,7 @@
 /* ===================== 로그인 ================= */
 
 
+
 /* ===================== 회원가입 ================= */
 
 
@@ -52,31 +53,39 @@
     padding-bottom: 20px;
 }
 
+.flied-input-wrap{
+    
+}
+.flied-input-wrap ul {
+  
+}
+
+
 .fieldset-wrap .flied-input {
-    width: 34%;
+    width:100%;
     margin: 20px auto 10px;
     display: flex;
+    justify-content: center;
     align-items: center;
-
 }
-
-.fieldset-wrap .flied-input.testwrap {
-    flex-wrap: wrap;
-
-}
-
 
 .fieldset-wrap .flied-input .flied-name {
-    padding-right: 35px;
+    
+    width: 10%;
+    /* font-size: 25px; */
+    text-align: left;
+   
+   
 }
-
 
 .fieldset-wrap .flied-input label {
-
-
     font-size: 0;
+    width: 70%;;
 }
 
+/* .fieldset-wrap .flied-input .flied-write {
+    width: 100%;
+} */
 
 
 .fieldset-wrap .flied-input input {
@@ -86,26 +95,26 @@
     border: 1px solid #adadad;
     padding: 2px 2px 2px 7px;
     color: #191919;
+    width: 100%;
+    height: 80px;
+    font-size: 19px;
+    font-weight: 500;
+
 }
 
 .fieldset-wrap .flied-btn {
-    width: 34%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-
 }
 
-.test1 {
+.address-form {
     width: 100%;
     display: flex;
     align-items: center;
 }
-
-.test2 {
+.address-form .other-add {
     display: flex;
-    width: 100%;
-    margin-bottom: 10px;
 }
 
 .flied-btn .checkbox-text {
@@ -139,5 +148,5 @@
 .fieldset form {}
 
 .fieldset form .form-title {
-    d
+    
 }
