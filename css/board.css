@@ -13,39 +13,25 @@
 }
 
 .fieldset-wrap {
+    position: relative;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-
+    
 }
 
-.fieldset input {
-    border: 1px solid #565656;
+.form {
+    width: 60%;
+    margin: 0 auto;
 }
-
-
-.checkbox-text {
-    display: inline-block;
-}
-
-/* ===================== 로그인 ================= */
-
-
-
-/* ===================== 회원가입 ================= */
-
 
 .fieldset-wrap .fieldset {
     width: 100%;
     text-align: center;
-    margin-top: 120px;
 }
 
 .fieldset-wrap .flied-title {
     margin: 20px auto 50px;
+    text-align: center;
 }
 
 .fieldset-wrap .flied-title h2 {
@@ -53,74 +39,86 @@
     padding-bottom: 20px;
 }
 
-.flied-input-wrap{
-    
-}
-.flied-input-wrap ul {
-  
-}
 
-
-.fieldset-wrap .flied-input {
-    width:100%;
-    margin: 20px auto 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.fieldset-wrap .flied-input .flied-name {
-    
-    width: 10%;
-    /* font-size: 25px; */
-    text-align: left;
-   
-   
-}
-
-.fieldset-wrap .flied-input label {
-    font-size: 0;
-    width: 70%;;
-}
-
-/* .fieldset-wrap .flied-input .flied-write {
-    width: 100%;
-} */
-
-
-.fieldset-wrap .flied-input input {
-    width: 100%;
-    height: 45px;
-    display: block;
-    border: 1px solid #adadad;
-    padding: 2px 2px 2px 7px;
-    color: #191919;
-    width: 100%;
-    height: 80px;
-    font-size: 19px;
-    font-weight: 500;
-
-}
-
-.fieldset-wrap .flied-btn {
-    margin: 0 auto;
+.form-info{
     display: flex;
     justify-content: space-between;
 }
 
-.address-form {
+.form-info h3{
+    font-size: 21px;
+}
+
+.form-info p{
+    font-size: 17px;
+}
+
+
+.fieldset-wrap .flied-input {
+   margin: 10px auto ;
+   display: flex;
+   align-items: center;
+}
+
+.fieldset-wrap .flied-name {
+    text-align: left;
+}
+
+.fieldset-wrap label {
+   flex:1;
+   max-width: 100px;
+   font-weight: 400;
+}
+
+
+
+.fieldset-wrap .input {
+
+    display: block;
+    border: 1px solid #adadad;
+    padding: 10px;
+    color: #191919;
     width: 100%;
-    display: flex;
-    align-items: center;
+    height: 70px;
+    font-size: 16px;
+    font-weight: 500;
+    flex:2;
 }
-.address-form .other-add {
-    display: flex;
+
+
+.postal-btn{
 }
+
+.postal-btn a {
+    display: inline-block;
+    font-size: 13px;
+    background: #777;
+    color: #fff;
+    border: 0;
+    text-align: center;
+    padding:20px;
+    margin-left:5px;
+    }
+
+
+.fieldset-wrap .flied-btn {
+    margin: 0 auto;
+    padding-left: 6em;
+}
+
 
 .flied-btn .checkbox-text {
     display: inline-block;
 
 
+}
+
+::placeholder{
+    font-size:15px;
+    font-weight: 200;
+}
+.checkbox-text {
+    display: inline-block;
 }
 
 .chek-save input[type=check] {}
@@ -133,16 +131,18 @@
 
 .confirm-btn {
     margin: 40px auto;
+    text-align: center;
 }
 
 .confirm-btn button {
     width: 200px;
-    height: 45px;
+    height: 60px;
     font-size: 16px;
     background: #191919;
     color: #fff;
     border: 0;
 }
+
 
 
 .fieldset form {}
