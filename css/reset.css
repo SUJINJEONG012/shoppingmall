@@ -108,11 +108,11 @@ video {
     font-size: 16px;
     line-height: 24px;
     font-style: normal;
-    font-weight: 400;
     vertical-align: baseline;
     line-height: 1.2;
     letter-spacing: -1px;
     color: #191919;
+    font-weight: 300;
     font-family: "Noto Sans KR", "Montserrat", sans-serif, "맑은 고딕", "Nanum Gothic", "나눔 고딕", "돋움", dotum, sans-serif;
 }
 
