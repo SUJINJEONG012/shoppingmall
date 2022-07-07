@@ -15,51 +15,66 @@
 <body>
 
     <header class="admin-header">
+
         <nav class="top-menu">
-            <ul>
-                <li><a href="">상점관리</a></li>
-                <li><a href="">상품관리</a></li>
-                <li><a href="">주문관리</a></li>
-                <li><a href="">회원관리</a></li>
-                <li><a href="">게시판관리</a></li>
+            <ul class="tabs">
+                <li data-tab-target="store"><a href="">상점관리</a></li>
+                <li data-tab-target="product"><a href="">상품관리</a></li>
+                <li data-tab-target="order"><a href="">주문관리</a></li>
+                <li data-tab-target="member"><a href="">회원관리</a></li>
+                <li data-tab-target="board"><a href="">게시판관리</a></li>
             </ul>
         </nav>
 
-        <div class="head-tab-menu">
-            <nav class="left-menu">
-                <ul class="store" id="상점관리">
+
+        <div class="left-menu">
+
+            <div id="store" data-tab-content class="active">
+                <ul class="depth-menu">
                     <li><a href="">쇼핑몰정보</a></li>
                     <li><a href="">결제방식 설정</a></li>
                     <li><a href="">배송관리 설정</a></li>
                     <li><a href="">개인정보제공설정</a></li>
                     <li><a href="">이용약관설정</a></li>
                 </ul>
+            </div>
 
+
+            <div id="" data-tab-content>
                 <ul class="product" id="상품관리">
                     <li><a href="">상품관리에 들어갈 카테고리</a></li>
                     <li><a href=""></a></li>
                     <li><a href=""></a></li>
                 </ul>
+            </div>
 
+            <div id="" data-tab-content>
                 <ul class="order" id="주문관리">
                     <li><a href="">주문관리에 들어갈 ㄴ카테고리</a></li>
                     <li><a href=""></a></li>
                     <li><a href=""></a></li>
                 </ul>
+            </div>
+
+            <div id="" data-tab-content>
                 <ul class="member" id="회원관리">
                     <li><a href="">주문관리에 들어갈 ㄴ카테고리</a></li>
                     <li><a href=""></a></li>
                     <li><a href=""></a></li>
                 </ul>
+            </div>
 
+
+            <div id="" data-tab-content>
                 <ul class="board" id="게시판관리">
                     <li><a href="">주문관리에 들어갈 ㄴ카테고리</a></li>
                     <li><a href=""></a></li>
                     <li><a href=""></a></li>
                 </ul>
+            </div>
 
-            </nav>
         </div>
+
     </header>
 
 
