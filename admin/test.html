@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,61 @@
 </head>
 
 <body>
+
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        ul {
+            display: flex;
+            padding: 0;
+            list-style: none;
+        }
+
+        .depth-menu {
+            flex-direction: column;
+        }
+
+        li {
+            display: inline-flex;
+            padding: 8px 12px;
+            cursor: pointer;
+            color: #999;
+            border-bottom: 2px solid transparent;
+        }
+
+
+        li:hover {
+            color: #555;
+            transition: 0.5s;
+        }
+
+
+
+
+
+        li.active {
+            color: slateblue;
+            border-bottom: 2px solid slateblue;
+
+
+        }
+
+        li.active:hover {
+            background: slateblue;
+            color: #fff;
+        }
+
+        [data-tab-content] {
+            display: none;
+        }
+
+        .active[data-tab-content] {
+            display: block;
+        }
+    </style>
     <div class="container">
         <ul class="tabs">
             <li data-tab-target="#home" class="">home</li>
@@ -17,9 +72,63 @@
         </ul>
 
         <div class="tab-content">
-            <div id="home" data-tab-content class="active"></div>
+            <div id="home" data-tab-content class="active">
+                <ul class="depth-menu">
+                    <li>테스트1</li>
+                    <li>테스트1</li>
+                    <li>테스트1</li>
+                    <li>테스트1</li>
+                </ul>
+            </div>
+
+            <div id="about" data-tab-content>
+                <ul class="depth-menu">
+                    <li>테스트2</li>
+                    <li>테스트2</li>
+                    <li>테스트2</li>
+                    <li>테스트2</li>
+                </ul>
+            </div>
+
+            <div id="contact" data-tab-content>
+                <ul class="depth-menu">
+                    <li>테스트3</li>
+                    <li>테스트3</li>
+                    <li>테스트3</li>
+                    <li>테스트3</li>
+                </ul>
+            </div>
+
+
         </div>
     </div>
+
+
+    <script>
+        const tabs = document.querySelectorAll('[data-tab-target');
+        const tabContents = document.querySelectorAll('[data-tab-content]');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = document.querySelector(tab.dataset.tabTarget)
+                console.log(target);
+
+
+                tabContents.forEach(tabContent => {
+                    tabContent.classList.remove('active')
+                });
+
+                tabs.forEach(tab => {
+                    tab.classList.remove('active')
+                });
+                target.classList.add('active')
+                tab.classList.add('active')
+            })
+        })
+
+
+
+    </script>
 </body>
 
 </html>
