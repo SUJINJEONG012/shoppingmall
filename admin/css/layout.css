@@ -2,3 +2,52 @@
     position: relative;
     background-color: darkblue;
 }
+
+.top-menu {}
+
+.top-menu ul {
+    display: flex;
+}
+
+
+.top-menu .tabs {}
+
+.top-menu .tabs>li {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    font-size: 25px;
+}
+
+.top-menu .tabs>li:hover {
+    color: #fff;
+    transition: 0.5s;
+}
+
+.top-menu .tabs>li.active {
+    color: slateblue;
+    border-bottom: 2px solid slateblue;
+}
+
+.top-menu .tabs>li.active:hover {
+    background-color: slateblue;
+}
+
+[data-tab-content] {
+    display: none;
+}
+
+.active[data-tab-content] {
+    display: block;
+}
+
+
+.left-menu {}
+
+.left-menu ul.depth-menu {
+    flex-direction: column;
+}
+
+.left-menu ul.depth-menu li {
+    padding: 8px 12px;
+}

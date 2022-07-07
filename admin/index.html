@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/common/favicon.png">
+    <title>관리자 메인</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/common/favicon.png">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="./css/layout.css">
     <link rel="stylesheet" href="./css/main.css">
-    <title>Admin 메인</title>
+
+    <script src="./js/index.js" defer></script>
 </head>
 
 <body>
@@ -18,11 +20,11 @@
 
         <nav class="top-menu">
             <ul class="tabs">
-                <li data-tab-target="store"><a href="">상점관리</a></li>
-                <li data-tab-target="product"><a href="">상품관리</a></li>
-                <li data-tab-target="order"><a href="">주문관리</a></li>
-                <li data-tab-target="member"><a href="">회원관리</a></li>
-                <li data-tab-target="board"><a href="">게시판관리</a></li>
+                <li data-tab-target="#store">상점관리</li>
+                <li data-tab-target="#product">상품관리</li>
+                <li data-tab-target="#order">주문관리</li>
+                <li data-tab-target="#member">회원관리</li>
+                <li data-tab-target="#board">게시판관리</li>
             </ul>
         </nav>
 
@@ -41,35 +43,35 @@
 
 
             <div id="product" data-tab-content>
-                <ul class="product" id="상품관리">
+                <ul class="depth-menu">
                     <li><a href="">상품관리에 들어갈 카테고리</a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                    <li><a href="">품관리에 들어갈 카테고리</a></li>
+                    <li><a href="">품관리에 들어갈 카테고리</a></li>
                 </ul>
             </div>
 
             <div id="order" data-tab-content>
-                <ul class="order" id="주문관리">
+                <ul class="depth-menu">
                     <li><a href="">주문관리에 들어갈 ㄴ카테고리</a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                    <li><a href="">주문관리에 들어갈 ㄴ카테고리</a></li>
+                    <li><a href="">주문관리에 들어갈 ㄴ카테고리</a></li>
                 </ul>
             </div>
 
             <div id="member" data-tab-content>
-                <ul class="member" id="회원관리">
-                    <li><a href="">주문관리에 들어갈 ㄴ카테고리</a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                <ul class="depth-menu">
+                    <li><a href="">회원관리에 들어갈 ㄴ카테고리</a></li>
+                    <li><a href="">회원관리에 들어갈 ㄴ카테고리</a></li>
+                    <li><a href="">회원관리에 들어갈 ㄴ카테고리</a></li>
                 </ul>
             </div>
 
 
             <div id="board" data-tab-content>
-                <ul class="board" id="게시판관리">
-                    <li><a href="">주문관리에 들어갈 ㄴ카테고리</a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                <ul class="depth-menu">
+                    <li><a href="">게시판에 들어갈 ㄴ카테고리</a></li>
+                    <li><a href="">게시판에 들어갈 ㄴ카테고리</a></li>
+                    <li><a href="">게시판에 들어갈 ㄴ카테고리</a></li>
                 </ul>
             </div>
 
