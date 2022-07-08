@@ -3,8 +3,9 @@
 
 const tabs = document.querySelectorAll('[data-tab-target');
 const tabContents = document.querySelectorAll('[data-tab-content]');
-//아코디언
+//아코디언,
 const acc = document.querySelectorAll('.accordion');
+
 
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -23,7 +24,13 @@ tabs.forEach(tab => {
 })
 
 
-
+//아코디언 
+/*<div class="accordion">쇼핑몰정보</div>
+<div class="panel">
+    <ul>
+        <li><a href="">내용1</a></li>
+    </ul>
+</div>*/
 for (let i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function () {
         this.classList.toggle("active");
