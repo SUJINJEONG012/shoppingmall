@@ -11,7 +11,7 @@
 <body>
 
     <style>
-        .container {
+        /* .container {
             max-width: 800px;
             margin: 0 auto;
         }
@@ -21,11 +21,9 @@
             padding: 0;
             list-style: none;
         }
-
         .depth-menu {
             flex-direction: column;
         }
-
         li {
             display: inline-flex;
             padding: 8px 12px;
@@ -33,24 +31,14 @@
             color: #999;
             border-bottom: 2px solid transparent;
         }
-
-
         li:hover {
             color: #555;
             transition: 0.5s;
         }
-
-
-
-
-
         li.active {
             color: slateblue;
             border-bottom: 2px solid slateblue;
-
-
         }
-
         li.active:hover {
             background: slateblue;
             color: #fff;
@@ -59,12 +47,118 @@
         [data-tab-content] {
             display: none;
         }
-
         .active[data-tab-content] {
             display: block;
+        } */
+
+        /* 아코디언 메뉴 */
+        .accordion {
+            background-color: #fff;
+            padding: 16px;
+            width: 100%;
+            text-align: left;
+            font-size: 16px;
+            transition: .4s;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        .accordion::after {
+            content: "↓";
+            font-weight: bold;
+        }
+
+        .active::after {
+            content: "↑";
+        }
+
+        .panel {
+            padding: 0 16px;
+            background-color: #fff;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .2s ease-out;
+            border-bottom: 1px solid #eee;
         }
     </style>
-    <div class="container">
+
+
+    <div class="accordion">메뉴1</div>
+    <div class="panel">
+        <ul>
+            <li><a href="">내용1</a></li>
+            <li><a href="">내용1</a></li>
+            <li><a href="">내용1</a></li>
+        </ul>
+    </div>
+
+
+    <div class="accordion">메뉴2</div>
+    <div class="panlel">
+        <ul>
+            <li><a href="">내용2</a></li>
+            <li><a href="">내용2</a></i>
+            <li><a href="">내용2</a></li>
+        </ul>
+    </div>
+
+    <div class="accordion">메뉴3</div>
+    <div class="panel">
+        <ul>
+            <li><a href="">내용3</a></li>
+            <li><a href="">내용3</a></li>
+            <li><a href="">내용3</a></li>
+        </ul>
+    </div>
+
+
+    <script>
+
+
+        // const tabs = document.querySelectorAll('[data-tab-target');
+        // const tabContents = document.querySelectorAll('[data-tab-content]');
+
+        // tabs.forEach(tab => {
+        //     tab.addEventListener('click', () => {
+        //         const target = document.querySelector(tab.dataset.tabTarget)
+        //         console.log(target);
+
+
+        //         tabContents.forEach(tabContent => {
+        //             tabContent.classList.remove('active')
+        //         });
+
+        //         tabs.forEach(tab => {
+        //             tab.classList.remove('active')
+        //         });
+        //         target.classList.add('active')
+        //         tab.classList.add('active')
+        //     })
+        // })
+
+        const acc = document.querySelector('.accordion');
+        let i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+
+
+    </script>
+
+    <!-- <div class="container">
         <ul class="tabs">
             <li data-tab-target="#home" class="">home</li>
             <li data-tab-target="#about" class="">about</li>
@@ -101,34 +195,10 @@
 
 
         </div>
-    </div>
-
-
-    <script>
-        const tabs = document.querySelectorAll('[data-tab-target');
-        const tabContents = document.querySelectorAll('[data-tab-content]');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const target = document.querySelector(tab.dataset.tabTarget)
-                console.log(target);
-
-
-                tabContents.forEach(tabContent => {
-                    tabContent.classList.remove('active')
-                });
-
-                tabs.forEach(tab => {
-                    tab.classList.remove('active')
-                });
-                target.classList.add('active')
-                tab.classList.add('active')
-            })
-        })
+    </div> -->
 
 
 
-    </script>
 </body>
 
 </html>
