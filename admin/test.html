@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
     <title>메뉴스크립트</title>
 </head>
 
@@ -140,13 +141,14 @@
         //     })
         // })
 
-        const acc = document.querySelector('.accordion');
-        let i;
+        let acc = document.querySelectorAll('.accordion');
+        console.log(acc);
 
-        for (i = 0; i < acc.length; i++) {
+
+        for (let i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function () {
                 this.classList.toggle("active");
-                var panel = this.nextElementSibling;
+                let panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
                     panel.style.maxHeight = null;
                 } else {
