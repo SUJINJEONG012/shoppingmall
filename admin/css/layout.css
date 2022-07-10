@@ -82,14 +82,11 @@
     display: flex;
 }
 
-.left-menu {
-    display: none;
-}
+
 
 .sidebar {
     background-color: #fff;
     width: 15%;
-    height: 100vw;
     box-shadow: 0 50px 100px rgb(17 20 39 / 20%);
 
 }
@@ -109,13 +106,6 @@
     padding: 20px 30px;
 }
 
-.sidebar ul.depth-menu li.big-title i {
-
-    font-size: 17px;
-    padding-right: 10px;
-    display: inline-block;
-}
-
 
 .sidebar ul.depth-menu li a {
     display: block;
@@ -131,13 +121,13 @@
 
 
 
+
+
 .content {
     position: relative;
-    width: 50%;
+    width: 100%;
     padding: 35px 45px;
-    order: 2;
-    flex-grow: 3;
-    background: yellow;
+    background-color: yellow;
 }
 
 .content .item-area {
