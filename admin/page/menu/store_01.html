@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쇼핑몰 설정</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../images/common/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="../../../css/reset.css">
     <link rel="stylesheet" href="../../css/layout.css">
     <link rel="stylesheet" href="../../css/main.css">
@@ -14,27 +15,37 @@
     <script src="../../js/index.js" defer></script>
 </head>
 
-<body style="background-color: bisque;">
+<body>
 
     <header class="admin-header">
 
-        <nav class="top-menu">
-            <ul class="tabs">
-                <li data-tab-target="#store">상점관리</li>
-                <li data-tab-target="#product">상품관리</li>
-                <li data-tab-target="#order">주문관리</li>
-                <li data-tab-target="#member">회원관리</li>
-                <li data-tab-target="#board">게시판관리</li>
-            </ul>
-        </nav>
+        <div class="top-menu">
+            <h1 class="logo"><a href="../../index.html" lang="en">SLOM`ANGE</a></h1>
+            <nav>
+                <ul class="tabs">
+                    <li><a href="../../index.html"><i class="fas fa-home"></i>홈</a></li>
+                    <li data-tab-target="#store" class=""><i class="fas fa-store"></i>상점관리</li>
+                    <li data-tab-target="#product"><i class="fas fa-tshirt"></i>상품관리</li>
+                    <li data-tab-target="#order"><i class="fas fa-shopping-cart"></i>주문관리</li>
+                    <li data-tab-target="#member"><i class="fas fa-user"></i>회원관리</li>
+                    <li data-tab-target="#board"><i class="fas fa-clipboard"></i>게시판관리</li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
 
 
-        <div class="left-menu">
+
+    <div class="container-wrap store_01">
+
+
+        <div class="sidebar">
 
             <div id="store" data-tab-content class="active">
                 <ul class="depth-menu">
                     <li><a href="#none">쇼핑몰 설정</a></li>
-                    <li><a href="./store_02.html">비밀번호 변경</a></li>
+                    <li><a href="./store_03.html">비밀번호 변경</a></li>
                     <li><a href="">결제관리</a></li>
                     <li><a href="">배송비설정</a></li>
                     <li><a href="">이용약관설정</a></li>
@@ -82,15 +93,14 @@
 
         </div>
 
-    </header>
+        <div class="content">
+
+        </div>
+
+    </div>
 
 
-    그래프형식으로
 
-    매출현황, 주문현황
-
-    신규가입회원
-    공지사항
 
 
 </body>

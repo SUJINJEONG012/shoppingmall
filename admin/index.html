@@ -20,20 +20,27 @@
 
     <header class="admin-header">
         <div class="top-menu">
-            <h1 class="logo"><a href="#" lang="en">SLOM`ANGE</a></h1>
+            <h1 class="logo"><a href="./index.html" lang="en">SLOM`ANGE</a></h1>
             <nav>
                 <ul class="tabs">
-                    <li data-tab-target="#store"><i class="fas fa-store"></i>상점관리</li>
-                    <li data-tab-target="#product"><i class="fas fa-tshirt"></i>상품관리</li>
-                    <li data-tab-target="#order"><i class="fas fa-shopping-cart"></i>주문관리</li>
-                    <li data-tab-target="#member"><i class="fas fa-user"></i>회원관리</li>
-                    <li data-tab-target="#board"><i class="fas fa-clipboard"></i>게시판관리</li>
+                    <li class="hover"><i class="fas fa-home"></i>홈</li>
+                    <li data-tab-target="#store">
+                        <a href="./page/menu/store_01.html"><i class="fas fa-store"></i>상점관리</a>
+                    </li>
+
+                    <li><a href="./page/menu/store_02.html"><i class="fas fa-tshirt"></i>상품관리</a></li>
+                    <li><a href="./page/menu/store_03.html"></a><i class="fas fa-shopping-cart"></i>주문관리</a></li>
+                    <li><a href="./page/menu/store_04.html"></a><i class="fas fa-user"></i>회원관리</a></li>
+                    <li><a href="./page/menu/store_05.html"></a><i class="fas fa-clipboard"></i>게시판관리</a></li>
                 </ul>
             </nav>
         </div>
+    </header>
 
 
-        <div class="left-menu">
+    <div class="container-wrap">
+
+        <div class="left-menu sidebar">
 
             <div id="store" data-tab-content class="active">
                 <ul class="depth-menu">
@@ -84,17 +91,69 @@
                 </ul>
             </div>
 
+
         </div>
 
-    </header>
 
 
-    그래프형식으로
 
-    매출현황, 주문현황
 
-    신규가입회원
-    공지사항
+        <div class="content">
+
+
+            <div class="item-area order">
+                <h2 class="title"> 주문현황</h2>
+                <div class="item-cont">
+                    <table>
+
+                        <caption>주문현황</caption>
+
+                        <colgroup></colgroup>
+                        <thead>
+                            <tr>
+                                <th>입금전</th>
+                                <th>상품준비중</th>
+                                <th>배송준비중</th>
+                                <th>배송중</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+
+            <div class="item-area sales">
+                <h2 class="title">매출현황 - 그래프</h2>
+                <div class="item-cont">
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
 
 
 </body>

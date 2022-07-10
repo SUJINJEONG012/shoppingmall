@@ -1,18 +1,20 @@
 .admin-header {
     position: relative;
-    background-color: transparent;
+    background: #2a3652;
+    padding: 30px 0;
 }
 
 .top-menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+
 }
 
 .top-menu .logo a {
     font-size: 40px;
+    color: #fff;
 }
-
 
 .top-menu ul {
     display: flex;
@@ -22,10 +24,23 @@
 .top-menu .tabs {}
 
 .top-menu .tabs>li {
-    padding: 8px 12px;
+    padding: 10px 20px;
     cursor: pointer;
     border-bottom: 2px solid transparent;
-    font-size: 25px;
+    font-size: 19px;
+    color: #b8bfd0;
+}
+
+.top-menu .tabs>li i {
+    color: #b8bfd0;
+    font-size: 19px;
+    padding-right: 10px;
+    display: inline-block;
+}
+
+.top-menu .tabs>li.hover i,
+.top-menu .tabs>li.active i {
+    color: #fff;
 }
 
 .top-menu .tabs>li:hover {
@@ -33,14 +48,16 @@
     transition: 0.5s;
 }
 
+.top-menu .tabs>li.hover,
 .top-menu .tabs>li.active {
-    color: slateblue;
-    border-bottom: 2px solid slateblue;
+    color: #fff;
+    background-color: transparent;
+    border-bottom: 2px solid transparent;
 }
 
-.top-menu .tabs>li.active:hover {
-    background-color: slateblue;
-}
+
+
+.top-menu .tabs>li.active:hover {}
 
 [data-tab-content] {
     display: none;
@@ -51,15 +68,109 @@
 }
 
 
-.left-menu {}
-
-.left-menu ul.depth-menu {
-    flex-direction: column;
+.container-wrap {
+    display: flex;
+    background-color: #f4f5f8;
+    width: 100%;
+    min-height: 500px;
 }
 
-.left-menu ul.depth-menu li {
-    padding: 8px 12px;
+.left-menu {
+    display: none;
 }
+
+.sidebar {
+    background-color: #fff;
+    width: 15%;
+    box-shadow: 0 50px 100px rgb(17 20 39 / 20%);
+
+}
+
+.sidebar ul.depth-menu {}
+
+.sidebar ul.depth-menu li {
+    padding: 20px 30px;
+    border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+}
+
+.content {
+    width: 50%;
+    padding: 35px 45px;
+}
+
+.content .item-area {
+    position: relative;
+}
+
+.content .item-area h2 {
+    font-size: 19px;
+    padding-bottom: 25px;
+}
+
+.content .order .item-cont table {
+    border-top: 1px solid #e2e5ea;
+    line-height: 16px;
+    background-color: #fff;
+}
+
+.content .order .item-cont table th,
+.content .order .item-cont table td {
+    padding: 6px 8px;
+    vertical-align: middle;
+    letter-spacing: 0;
+}
+
+
+.content .order .item-cont table th {
+    border: 1px solid #e2e5ea;
+    font-weight: normal;
+    background-color: #fafafd;
+}
+
+.content .order .item-cont table tbody td {
+    border: 1px solid #e2e5ea;
+    text-align: center;
+}
+
+.content .order .item-cont table tbody tr.em th,
+.content .order .item-cont table tbody tr.em td,
+.content .order .item-cont table tbody tr.em td a {
+    color: #3971ff;
+}
+
+.content .order .item-cont table tbody tr.total td,
+.content .order .item-cont table tbody tr.total td a {
+    color: #3971FF;
+}
+
+.content .order .item-cont table .left {
+    text-align: left;
+}
+
+.content .order .item-cont table .center {
+    text-align: center;
+}
+
+.content .order .item-cont table .right {
+    text-align: right;
+}
+
+.content .order .item-cont table tbody th {
+    height: 28px;
+    text-align: center;
+    padding: 6px 8px;
+    background-color: #fff;
+}
+
+.content .order .item-cont table tbody td {
+    height: 28px;
+}
+
+
+
+/* 트래픽 용량 end */
+
 
 /* 아코디언 */
 /* .accordion {
