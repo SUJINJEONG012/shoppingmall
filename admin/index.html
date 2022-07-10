@@ -19,19 +19,19 @@
 <body>
 
     <header class="admin-header">
-        <div class="top-menu">
+        <div class="top-menu inner">
             <h1 class="logo"><a href="./index.html" lang="en">SLOM`ANGE</a></h1>
             <nav>
                 <ul class="tabs">
-                    <li class="hover"><i class="fas fa-home"></i>홈</li>
-                    <li data-tab-target="#store">
-                        <a href="./page/menu/store_01.html"><i class="fas fa-store"></i>상점관리</a>
-                    </li>
-
-                    <li><a href="./page/menu/store_02.html"><i class="fas fa-tshirt"></i>상품관리</a></li>
-                    <li><a href="./page/menu/store_03.html"></a><i class="fas fa-shopping-cart"></i>주문관리</a></li>
-                    <li><a href="./page/menu/store_04.html"></a><i class="fas fa-user"></i>회원관리</a></li>
-                    <li><a href="./page/menu/store_05.html"></a><i class="fas fa-clipboard"></i>게시판관리</a></li>
+                    <li><a href="./page/store/store_01.html"><i class="fas fa-store"></i>상점관리</a></li>
+                    <li data-tab-target="#product"><a href="./page/product/product_01.html">
+                            <i class="fas fa-tshirt"></i>상품관리</a></li>
+                    <li data-tab-target="#order"><a href="./page/order/order_01.html">
+                            <i class="fas fa-shopping-cart"></i>주문관리</a></li>
+                    <li data-tab-target="#member"><a href="./page/member/member_01.html">
+                            <i class="fas fa-user"></i>회원관리</a></li>
+                    <li data-tab-target="#board"><a href="./page/board/board_01.html">
+                            <i class="fas fa-clipboard"></i>게시판관리</a></li>
                 </ul>
             </nav>
         </div>
@@ -40,117 +40,130 @@
 
     <div class="container-wrap">
 
-        <div class="left-menu sidebar">
+        <div class="inner">
 
-            <div id="store" data-tab-content class="active">
-                <ul class="depth-menu">
-                    <li><a href="./page/menu/store_01.html">쇼핑몰 설정</a></li>
-                    <li><a href="./page/menu/store_02.html">비밀번호 변경</a></li>
-                    <li><a href="./page/menu/store_03.html">결제관리</a></li>
-                    <li><a href="./page/menu/store_04.html">배송비설정</a></li>
-                    <li><a href="./page/menu/store_05.html">이용약관설정</a></li>
-                    <li><a href="./page/menu/store_06.html">개인정보제공 설정</a></li>
-                </ul>
+            <div class="left-menu sidebar">
+
+                <div id="store" data-tab-content class="active">
+                    <ul class="depth-menu">
+                        <li class="big-title "><i class="fas fa-store"></i>상점관리</li>
+                        <li data-tab-target="#store"><a href="./page/store/store_01.html">쇼핑몰 설정</a></li>
+                        <li><a href="./page/store/store_02.html">비밀번호 변경</a></li>
+                        <li><a href="./page/store/store_03.html">결제관리 설정</a></li>
+                        <li><a href="./page/store/store_04.html">배송비 설정</a></li>
+                        <li><a href="./page/store/store_05.html">이용약관 설정</a></li>
+                        <li><a href="./page/store/store_06.html">개인정보제공 설정</a></li>
+                    </ul>
+                </div>
+
+
+                <div id="product" data-tab-content>
+                    <ul class="depth-menu">
+                        <li class="big-title "><i class="fas fa-store"></i>상점관리</li>
+                        <li><a href="">분류관리</a></li>
+                        <li><a href="">상품등록</a></li>
+                        <li><a href="">상품목록</a></li>
+                    </ul>
+                </div>
+
+                <div id="order" data-tab-content>
+                    <ul class="depth-menu">
+                        <li class="big-title "><i class="fas fa-store"></i>상점관리</li>
+                        <li><a href="">전체주문조회</a></li>
+                        <li><a href="">입금전관리</a></li>
+                        <li><a href="">상품준비중관리</a></li>
+                        <li><a href="">배송준비중관리</a></li>
+                        <li><a href="">배송중관리</a></li>
+                        <li><a href="">배송완료조회</a></li>
+                        <li><a href="">취소.교환.반품.환불관리</a></li>
+                    </ul>
+                </div>
+
+                <div id="member" data-tab-content>
+                    <ul class="depth-menu">
+                        <li class="big-title "><i class="fas fa-store"></i>상점관리</li>
+                        <li><a href="">회원정보조회</a></li>
+                        <li><a href="">회원가입/탈퇴관리</a></li>
+
+                    </ul>
+                </div>
+
+
+                <div id="board" data-tab-content>
+                    <ul class="depth-menu">
+                        <li class="big-title "><i class="fas fa-store"></i>상점관리</li>
+                        <li><a href="">게시물 등록</a></li>
+                        <li><a href="">게시물 관리</a></li>
+                    </ul>
+                </div>
+
+
             </div>
 
 
-            <div id="product" data-tab-content>
-                <ul class="depth-menu">
-                    <li><a href="">분류관리</a></li>
-                    <li><a href="">상품등록</a></li>
-                    <li><a href="">상품목록</a></li>
-                </ul>
-            </div>
-
-            <div id="order" data-tab-content>
-                <ul class="depth-menu">
-                    <li><a href="">전체주문조회</a></li>
-                    <li><a href="">입금전관리</a></li>
-                    <li><a href="">상품준비중관리</a></li>
-                    <li><a href="">배송준비중관리</a></li>
-                    <li><a href="">배송중관리</a></li>
-                    <li><a href="">배송완료조회</a></li>
-                    <li><a href="">취소.교환.반품.환불관리</a></li>
-                </ul>
-            </div>
-
-            <div id="member" data-tab-content>
-                <ul class="depth-menu">
-
-                    <li><a href="">회원정보조회</a></li>
-                    <li><a href="">회원가입/탈퇴관리</a></li>
-
-                </ul>
-            </div>
 
 
-            <div id="board" data-tab-content>
-                <ul class="depth-menu">
-                    <li><a href="">게시물 등록</a></li>
-                    <li><a href="">게시물 관리</a></li>
-                </ul>
+
+            <div class="content">
+
+
+
+                <div class="item-area order">
+                    <h2 class="title"> 오늘의 처리현황</h2>
+                    <div class="item-cont">
+                        <table>
+
+                            <caption>주문현황 </caption>
+
+                            <colgroup></colgroup>
+                            <thead>
+                                <tr>
+                                    <th>입금전</th>
+                                    <th>상품준비중</th>
+                                    <th>배송준비중</th>
+                                    <th>배송중</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td lang="en">0</td>
+                                    <td lang="en">0</td>
+                                    <td lang="en">0</td>
+                                    <td lang="en">0</td>
+                                </tr>
+
+
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+                <div class="item-area sales">
+                    <h2 class="title">매출현황 - 그래프</h2>
+                    <div class="item-cont">
+                    </div>
+                </div>
+                <div class="item-area member">
+                    <h2 class="title">신규 회원가입</h2>
+                    <div class="item-cont">
+                    </div>
+                </div>
+
+
+
+
+
+
             </div>
 
 
         </div>
-
-
-
-
-
-        <div class="content">
-
-
-            <div class="item-area order">
-                <h2 class="title"> 주문현황</h2>
-                <div class="item-cont">
-                    <table>
-
-                        <caption>주문현황</caption>
-
-                        <colgroup></colgroup>
-                        <thead>
-                            <tr>
-                                <th>입금전</th>
-                                <th>상품준비중</th>
-                                <th>배송준비중</th>
-                                <th>배송중</th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                            </tr>
-
-
-
-
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-
-
-            <div class="item-area sales">
-                <h2 class="title">매출현황 - 그래프</h2>
-                <div class="item-cont">
-                </div>
-            </div>
-
-
-
-
-
-
-        </div>
-
-
     </div>
 
 
