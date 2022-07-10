@@ -80,6 +80,8 @@
 
 .container-wrap .inner {
     display: flex;
+    margin: 50px auto;
+    min-height: 500px;
 }
 
 
@@ -127,7 +129,8 @@
     position: relative;
     width: 100%;
     padding: 35px 45px;
-    background-color: yellow;
+    background-color: #fff;
+
 }
 
 .content .item-area {
