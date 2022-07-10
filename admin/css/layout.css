@@ -3,7 +3,16 @@
     background-color: transparent;
 }
 
-.top-menu {}
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-menu .logo a {
+    font-size: 40px;
+}
+
 
 .top-menu ul {
     display: flex;
