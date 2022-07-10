@@ -89,6 +89,7 @@
 .sidebar {
     background-color: #fff;
     width: 15%;
+    height: 100vw;
     box-shadow: 0 50px 100px rgb(17 20 39 / 20%);
 
 }
@@ -106,6 +107,13 @@
     background-color: #f9f9f9;
     font-weight: 500;
     padding: 20px 30px;
+}
+
+.sidebar ul.depth-menu li.big-title i {
+
+    font-size: 17px;
+    padding-right: 10px;
+    display: inline-block;
 }
 
 
@@ -127,6 +135,9 @@
     position: relative;
     width: 50%;
     padding: 35px 45px;
+    order: 2;
+    flex-grow: 3;
+    background: yellow;
 }
 
 .content .item-area {
