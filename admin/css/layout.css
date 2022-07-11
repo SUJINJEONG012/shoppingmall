@@ -111,6 +111,11 @@
     padding: 20px 30px;
 }
 
+.sidebar ul.depth-menu li.big-title i {
+    padding-right: 10px;
+    font-size: 19px;
+}
+
 
 .sidebar ul.depth-menu li a {
     display: block;
@@ -146,55 +151,42 @@
     padding-bottom: 25px;
 }
 
-.content .order .item-cont table {
+.content .item-cont table {
     border-top: 1px solid #e2e5ea;
     line-height: 16px;
     background-color: #fff;
 }
 
-.content .order .item-cont table th,
-.content .order .item-cont table td {
+.content .item-cont table th,
+.content .item-cont table td {
     padding: 6px 8px;
     vertical-align: middle;
     letter-spacing: 0;
 }
 
 
-.content .order .item-cont table th {
+.content .item-cont table th {
     border: 1px solid #e2e5ea;
     font-weight: normal;
     background-color: #fafafd;
     padding: 20px;
 }
 
-.content .order .item-cont table tbody td {
-    border: 1px solid #e2e5ea;
-    text-align: center;
-}
-
-.content .order .item-cont table tbody tr.em th,
-.content .order .item-cont table tbody tr.em td,
-.content .order .item-cont table tbody tr.em td a {
-    color: #3971ff;
-}
-
-.content .order .item-cont table tbody tr.total td,
-.content .order .item-cont table tbody tr.total td a {
-    color: #3971FF;
-}
-
-.content .order .item-cont table tbody th {
+.content .item-cont table th {
     height: 28px;
     text-align: center;
     padding: 6px 8px;
     background-color: #fff;
 }
 
-.content .order .item-cont table tbody td {
+
+.content .item-cont table td {
+    border: 1px solid #e2e5ea;
+    text-align: center;
     height: 28px;
     padding: 30px;
-
 }
+
 
 
 
