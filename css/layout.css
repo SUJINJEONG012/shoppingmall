@@ -13,6 +13,7 @@ body {
 
 #wrap {
     position: relative;
+    height: 100%;
 }
 
 
@@ -32,10 +33,10 @@ body {
     font-size: 12px;
     position: absolute;
     top: 50%;
-    left: -70px;
+    left: 0;
     transform: rotate(-90deg);
     font-weight: bold;
-    
+
     letter-spacing: 0.09em;
     border-bottom: 2px solid rgb(187, 187, 187);
     padding: 0 0 10px 0;
