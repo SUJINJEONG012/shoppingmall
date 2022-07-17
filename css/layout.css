@@ -183,7 +183,7 @@ body {
 
 
 .main_header .header_wrap .header-menu ul li a {
-    font-size: 13px;
+    /* font-size: 13px; */
 }
 
 .main_header .header_wrap .header-menu ul li.active:before {
