@@ -57,7 +57,8 @@ body {
     background-color: #f9f9f9;
     box-shadow: 0 50px 50px rgb(255 254 254 / 10%);
     z-index: 2;
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 1px solid #e5e5e5;
+
 }
 
 
@@ -200,6 +201,12 @@ body {
 .main_header .header_wrap .header-menu ul li:hover a {
     font-weight: 500;
     color: tomato;
+}
+
+/* ========================= main ============================= */
+
+.main-content {
+    display: flex;
 }
 
 /* ========================= footer ============================= */
