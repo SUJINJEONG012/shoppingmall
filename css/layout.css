@@ -18,6 +18,7 @@ body {
 
 
 .container {
+    position: relative;
     padding-top: 200px;
     min-height: 600px;
 
@@ -210,14 +211,34 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-top: 64px;
+    padding: 0 30px;
 }
 
-.main-content .img img {
-    /* width: 40%; */
+.main-content .img {
+    width: 40%;
+
 }
 
-.main-content .text {}
+.main-content .text {
+    width: 45%;
+    padding-left: 40px;
+}
+
+.main-content .text h2 {
+    font-size: 19px;
+}
+
+.main-content .text p {
+    font-size: 16px;
+    line-height: 1.75;
+}
+
 
 /* ========================= footer ============================= */
 
-.main_footer {}
+.main_footer {
+    position: relative;
+    margin: 50px auto;
+    text-align: center;
+}
