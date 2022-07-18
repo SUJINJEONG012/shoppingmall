@@ -9,7 +9,37 @@
 </head>
 
 <style>
+    #menu {
+        background-color: antiquewhite;
+        margin: 0 auto;
+        text-align: center;
+        height: 50px;
+        width: 700px;
+    }
 
+    #menu>ul>li {
+        float: left;
+        width: 140px;
+        position: relative;
+    }
+
+    #menu>ul>li>ul {
+        width: 130px;
+        display: none;
+        position: absolute;
+
+        background-color: blue;
+
+    }
+
+    #menu>ul>li:hover>ul {
+        display: block;
+    }
+
+    #menu>ul>li>ul>li:hover {
+        background-color: orange;
+        transition: ease 1s;
+    }
 </style>
 
 <body>
