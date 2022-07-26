@@ -61,26 +61,49 @@
                         <div class="item-cont store">
                             <h2 class="title">회원정보조회</h2>
                             <table>
-                                <caption>기본정보 설정</caption>
+                                <caption>회원 목록</caption>
+                                <colgroup>
+                                    <col width="7%">
+                                    <col width="25%">
+                                    <col width="40%">
+                                    <col width="25%">
+                                    <col width="25%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th lang="en">No.</th>
+                                        <th>이름</th>
+                                        <th>아이디</th>
+                                        <th>휴대전화</th>
+                                        <th>주소</th>
+                                    </tr>
+                                </thead>
+
                                 <tbody>
+
                                     <tr>
-                                        <th>쇼핑몰명</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>관리자명</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>대표 휴대전화</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>대표 이메일</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input"></td>
+                                        <td headers="mb_list_chk" class="td_chk" rowspan="2">
+                                            <input type="checkbox" name="chk[]" value="0" id="chk_0">
+                                        </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>안젤라</td>
+                                        <td lang="en">peekaboo32@naver.com</td>
+                                        <td lang="en">010-1233-5678</td>
+                                        <td lang="en">부산광역시 수영구 광안동 90-센텀스카이비즈 1209호</td>
+
+
+                                    </tr>
+
+
+
+
+
                                 </tbody>
+
+
+
                             </table>
                         </div>
                         <!-- 01 -->
