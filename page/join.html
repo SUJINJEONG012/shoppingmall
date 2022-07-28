@@ -102,15 +102,15 @@
                                 <li class="flied-input testwrap">
 
                                     <label for="address">주소</label>
-                                    <input type="text" class="input" name="" id="address" placeholder="주소">
+                                    <input type="text" class="input" name="" id="address" placeholder="주소" readonly="true">
 
-                                    <span class="postal-btn"><a href="" class="dd">우편번호</a></span>
+                                    <span class="postal-btn" id="address_search" onclick="addressSearch()"><a class="dd">우편번호</a></span>
                                 </li>
 
                                 <li class="flied-input testwrap">
 
                                     <label for="address">나머지 주소</label>
-                                    <input type="text" class="input" name="" id="address" placeholder="주소">
+                                    <input type="text" class="input" name="" id="address_detail" placeholder="주소">
 
 
                                 </li>
@@ -119,7 +119,7 @@
 
 
                             <div class="confirm-btn">
-                                <button type="button" onclick="" class="">회원가입</button>
+                                <button type="button" onclick="join()" class="">회원가입</button>
                             </div>
                         </div><!-- form end -->
 
@@ -137,7 +137,8 @@
         <!-- join-wrap -->
     </div>
     <!-- wrap end -->
-
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="../js/join.js"></script>
 </body>
 
 </html>
