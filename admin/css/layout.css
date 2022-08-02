@@ -167,7 +167,6 @@
 .content .item-cont table td {
     vertical-align: middle;
     letter-spacing: 0;
-    padding: 15px;
     text-align: left;
     border: 1px solid #e2e5ea;
     font-weight: normal;
@@ -177,6 +176,8 @@
 .content .item-cont table th {
     width: 200px;
     background-color: #fff;
+    font-weight: 500;
+    padding: 15px;
 }
 
 .content .item-cont table td {
@@ -184,7 +185,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    padding: 10px;
 
+}
+
+.content .item-cont table td.td_chk {
+    text-align: center;
 }
 
 .content .item-cont table td input {
