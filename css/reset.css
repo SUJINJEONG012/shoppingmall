@@ -22,6 +22,7 @@
 
 
 
+
 s html,
 body,
 div,
@@ -188,16 +189,6 @@ a {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0
-}
-
-[lang="ko"] {
-    font-family: "Noto Sans KR", "Montserrat", sans-serif, "맑은 고딕", "Nanum Gothic", "나눔 고딕", "돋움", dotum, sans-serif;
-}
-
-[lang="en"] {
-    font-family: "Montserrat", "Noto Sans KR", sans-serif;
-    letter-spacing: 0;
-    font-weight: 400;
 }
 
 
