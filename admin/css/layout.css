@@ -206,43 +206,7 @@
     font-size: 12px;
 }
 
-
-
-
-
-/* 트래픽 용량 end */
-
-
-/* 아코디언 */
-/* .accordion {
-    background-color: #fff;
-    padding: 16px;
-    width: 100%;
-    text-align: left;
-    font-size: 16px;
-    transition: .4s;
+/*** =================== 에디터 =================== ***/
+.ck-editor__editable_inline {
+    min-height: 400px;
 }
-
-.active,
-.accordion:hover {
-    background-color: #f5f5f5;
-    font-weight: bold;
-}
-
-.accordion::after {
-    content: "↓";
-    font-weight: bold;
-}
-
-.active::after {
-    content: "↑";
-}
-
-.panel {
-    padding: 0 16px;
-    background-color: #fff;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .2s ease-out;
-    border-bottom: 1px solid #eee;
-} */
