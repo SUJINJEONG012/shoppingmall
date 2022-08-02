@@ -10,6 +10,7 @@
     font-style: normal;
 }
 
+
 [lang="ko"] {
     font-family: "Noto Sans KR", "Montserrat", sans-serif, "맑은 고딕", "Nanum Gothic", "나눔 고딕", "돋움", dotum, sans-serif;
 }
@@ -19,9 +20,6 @@
     letter-spacing: 0;
     font-weight: 400;
 }
-
-
-
 
 s html,
 body,
