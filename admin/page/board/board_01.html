@@ -64,27 +64,86 @@
                             <h2 class="title">게시물 등록</h2>
                             <table>
                                 <caption>기본정보 설정</caption>
-                                <tbody>
-                                    <tr>
-                                        <th>제목</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input"
-                                                lang="ko"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>내용 에디ㅉㅉ터</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>대표 휴대전화</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>대표 이메일</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input"></td>
-                                    </tr>
-
-                                </tbody>
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="25%">
+                                    <col width="40%">
+                                    <col width="25%">
+                                    <col width="25%">
+                                </colgroup>
                             </table>
+
+
+                            <form name="" id="" action="" onsubmit="" method="" enctype="" autocomplete="off">
+
+
+                                <div class="bo_w_info write_div">
+
+
+
+
+                                </div>
+
+                                <div class="write_div">
+                                    <span class="sound_only">옵션</span>
+                                    <ul class="bo_v_option">
+
+                                        <li class="chk_box"><input type="checkbox" id="notice" name="notice"
+                                                class="selec_chk" value="1">
+                                            <label for="notice"><span></span>공지</label>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="bo_w_tit write_div">
+                                    <label for="wr_subject" class="sound_only">제목<strong>필수</strong></label>
+
+                                    <div id="autosave_wrapper" class="write_div">
+                                        <input type="text" name="wr_subject" value="" id="wr_subject" required=""
+                                            class="frm_input full_input required" size="50" maxlength="255"
+                                            placeholder="제목">
+
+                                    </div>
+
+                                </div>
+
+                                <!-- 에디터 -->
+                                <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+
+                                <div id="editor">
+                                    <p>This is some sample content.</p>
+                                </div>
+                                <script>
+                                    ClassicEditor
+                                        .create(document.querySelector('#editor'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+
+
+
+
+
+
+                                <div class="file_wr write_div">
+                                    <label for="bf_file_1" class="lb_icon"><i class="fa fa-folder-open"
+                                            aria-hidden="true"></i><span class="sound_only"> 파일 #1</span></label>
+                                    <input type="file" name="bf_file[]" id="bf_file_1"
+                                        title="파일첨부 1 : 용량 1,048,576 바이트 이하만 업로드 가능" class="frm_file ">
+                                </div>
+
+
+                                <div class="btn_confirm write_div">
+                                    <a href="https://demo.sir.kr/gnuboard5/bbs/board.php?bo_table=board"
+                                        class="btn_cancel btn">취소</a>
+                                    <button type="submit" id="btn_submit" accesskey="s"
+                                        class="btn_submit btn">작성완료</button>
+                                </div>
+                            </form>
+
+
                         </div>
                         <!-- 01 -->
 
