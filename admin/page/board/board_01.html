@@ -93,19 +93,12 @@
 
                                 </div>
 
-                                <!-- 에디터 -->
-                                <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+
 
                                 <div id="editor">
                                     <p>This is some sample content.</p>
                                 </div>
-                                <script>
-                                    ClassicEditor
-                                        .create(document.querySelector('#editor'))
-                                        .catch(error => {
-                                            console.error(error);
-                                        });
-                                </script>
+
 
 
 
@@ -123,7 +116,7 @@
                                 <div class="btn_confirm write_div">
                                     <a href="https://demo.sir.kr/gnuboard5/bbs/board.php?bo_table=board"
                                         class="btn_cancel btn">취소</a>
-                                    <button type="submit" id="btn_submit" accesskey="s"
+                                    <button type="button" id="btn_submit" accesskey="s"
                                         class="btn_submit btn">작성완료</button>
                                 </div>
                             </form>
@@ -145,10 +138,100 @@
         <!-- inner -->
     </div>
     <!-- container-wrap -->
+    <!-- 에디터 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script>
+        let myEditor
 
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                myEditor = editor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
 
+        const buttonEvent = document.getElementById('btn_submit');
 
+        buttonEvent.addEventListener('click', ()=>{
+            let title = document.getElementById("wr_subject").value;
+            let content = myEditor.getData();
+            let selectedFile = document.getElementById("bf_file_1").files[0];
+            let checked = document.getElementById("notice").checked;
+            console.log(title);
+            console.log(content);
+            console.log(selectedFile);
+            console.log(checked);
 
+            let formData = new FormData();
+            formData.append("title", title);
+            formData.append("content", content);
+            formData.append("mainNotice", checked);
+
+            if(selectedFile === null || selectedFile === undefined){
+                // formData.append("file", new File());
+            } else {
+                formData.append("file", selectedFile);
+            }
+
+            let accessToken = localStorage.getItem('accessToken');
+
+            fetch("http://121.145.8.135:8080/v1/api/admin/notice", {
+                method: "POST",
+                headers: {
+                    "Authorization" : `Bearer ${accessToken}`
+                },
+                body: formData,
+            })
+                .then((res) => res.json())
+                .then((res) => {
+                    if(res.code === 200){
+                        console.log(res.content);
+                    } else {
+                        if(res.status === 401){
+                            alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요");
+                            localStorage.removeItem('accessToken');
+                            location.href = "../../../page/login.html";
+                        } else {
+                            console.log(res);
+                            alert("공지사항 등록에 실패하셨습니다. 다시 시도해주세요");
+                        }
+                    }
+                });
+
+        });
+
+        let write = () => {
+            // let title = document.getElementById("wr_subject").value;
+            // let content = document.getElementById("editor").value;
+
+            // console.log(title);
+            // console.log(content);
+            // let data = {
+            //     username : username,
+            //     password : password
+            // }
+            //
+            // fetch("http://121.145.8.135:8080/login", {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify(data),
+            // })
+            //     .then((res) => res.json())
+            //     .then((res) => {
+            //         if(res.code === 200){
+            //             // console.log(res.content.accessToken);
+            //             localStorage.setItem('accessToken', res.content.accessToken);
+            //             location.href = "../index.html";
+            //         } else {
+            //             alert("로그인에 실패했습니다. 다시 시도해주세요");
+            //         }
+            //     });
+        }
+    </script>
 
 </body>
 
