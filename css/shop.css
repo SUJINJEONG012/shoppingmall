@@ -305,3 +305,14 @@
 .menuCategory li:nth-child(1)::before {
     display: none;
 }
+
+
+/* ===================== 디테일 ==================== */
+
+.detailArea {
+    display: flex;
+}
+
+.detailArea .detail-img {}
+
+.detailArea .detail-info {}
