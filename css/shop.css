@@ -151,7 +151,7 @@
 /* ========================= product-item wrap ============================= */
 .thumbnail-wrap {
     position: relative;
-    padding: 40px 0;
+    padding-bottom: 40px;
 }
 
 .thumbnail-title-wrap .thumbnail-title {
@@ -167,7 +167,7 @@
     position: relative;
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 
 }
 
@@ -232,13 +232,76 @@
 
 
 /* 쇼핑몰 카테고리*/
-.menuCategory {
+.menupackage {
     margin: 0 auto 50px;
     padding: 15px 0;
     width: 100%;
-
     border-top: 1px #ebebeb solid;
     border-bottom: 1px #ebebeb solid;
-    display: flex;
+}
 
+.cateTitle {
+    margin: 0;
+    display: inline-block;
+}
+
+.cateTitle h2 {
+    padding-right: 25px;
+    color: #333;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.menupackage ul {
+    display: inline-block;
+
+}
+
+.menupackage ul>li {
+    display: inline;
+    height: 13px;
+    margin: 0 8px 0 0;
+    padding: 0;
+    font-size: 11px;
+}
+
+.menuCategory {}
+
+.menuCategory .cateTitle {
+    display: inline-block;
+}
+
+.menuCategory li {
+    position: relative;
+    padding: 0 30px;
+}
+
+.menuCategory li::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    content: '';
+    width: 1px;
+    height: 10px;
+    background-color: #e4e4e4;
+    transform: translateY(-50%);
+}
+
+
+
+.menuCategory li a {
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.menuCategory li:nth-child(1) {
+    padding: 0;
+}
+
+.menuCategory li:nth-child(1)::before {
+    display: none;
 }
