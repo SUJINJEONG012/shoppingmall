@@ -308,11 +308,13 @@
 
 
 /* ===================== 디테일 ==================== */
-
 .detailArea {
+    position: relative;
     display: flex;
 }
 
-.detailArea .detail-img {}
+.detailArea .detail-img {
+    width: 50%;
+}
 
 .detailArea .detail-info {}
