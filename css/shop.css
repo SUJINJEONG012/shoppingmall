@@ -311,10 +311,217 @@
 .detailArea {
     position: relative;
     display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
 }
 
 .detailArea .detail-img {
+    width: 40%;
+}
+
+.detailArea .detail-info {
     width: 50%;
 }
 
-.detailArea .detail-info {}
+.detailArea .xans-product-option tr td {
+    padding: 0 0 6px 0;
+}
+
+
+
+.infoArea th {
+    font-weight: normal;
+    color: #555;
+    width: 115px;
+    padding: 7px 0;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.infoArea td {
+    padding: 7px 0;
+    vertical-align: middle;
+}
+
+.infoArea select {
+    width: 100%;
+    height: 32px;
+    font-size: 11px;
+    color: #555;
+}
+
+.infoArea table {
+    border: 0;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+
+
+.xans-product-detail .infoArea input {
+    height: 22px;
+    color: #555;
+}
+
+.detailArea .detail-info select {
+    min-width: 100px;
+    height: 21px;
+    padding: 0 0 0 2px;
+    border: 1px #d5d5d5 solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    text-indent: 0.01px;
+    text-overflow: "";
+    vertical-align: middle !important;
+    outline: none;
+}
+
+
+
+#totalProducts {
+    margin: 0;
+}
+
+#totalProducts table {
+    border: 0;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+#totalProducts tbody td {
+    color: #555;
+    line-height: 18px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+
+caption {
+    display: none;
+}
+
+
+
+
+#totalProducts tbody td img {
+    vertical-align: middle;
+}
+
+#totalProducts tbody td .quantity {
+    display: inline-block;
+    position: relative;
+    width: 50px !important;
+    vertical-align: top;
+    *margin: 0 4px 0 0;
+}
+
+
+
+#totalProducts tbody td .quantity input {
+    width: 22px;
+    height: 23px;
+    padding: 0 2px 0 3px;
+    line-height: 23px;
+    border: 1px solid #d4d8d9;
+    border-radius: 3px 0 0 3px;
+    *margin-top: -1px;
+}
+
+
+#totalProducts tbody.option_products tr td .quantity input,
+#totalProducts tbody.add_products tr td .quantity input {
+    height: 19px;
+    line-height: 19px;
+    font-size: 11px;
+}
+
+
+#totalProducts tbody td .quantity .up {
+    position: absolute;
+    left: 28px;
+    top: 0;
+}
+
+#totalProducts tbody td .quantity .down {
+    position: absolute;
+    left: 28px;
+    top: 12px;
+}
+
+a.delete {
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+
+
+
+#totalProducts tbody td img {
+    vertical-align: middle;
+}
+
+#totalProducts table .right {
+    padding-right: 0px;
+    font-weight: normal;
+    color: #333;
+    text-align: right;
+    font-size: 0;
+}
+
+
+
+
+
+#totalProducts tfoot td {
+    border: 1px #ddd solid;
+    margin: 10px 0 0;
+    padding: 10px;
+    color: #333;
+    vertical-align: middle;
+    background: #fbfafa;
+}
+
+tfoot td .total {
+    color: #333;
+
+}
+
+.btnArea {
+    margin: 10px -2px 0;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+    clear: both;
+    overflow: hidden;
+    font-family: 'Roboto', 'Lato', arial, 나눔고딕, 'Nanum Gothic', "맑은 고딕", 'Malgun Gothic', AppleGothic, "돋움", Dotum, sans-serif;
+}
+
+.btnArea a {
+    display: inline-block;
+    margin: 2px;
+    width: 124px;
+    height: 44px;
+    line-height: 44px;
+    vertical-align: middle;
+    color: #333;
+    border: 1px #bdbdbd solid;
+    background: #fff;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.btnArea a.buy {
+    background: #2b2b2b;
+    color: #fff;
+    border: 1px #2b2b2b solid;
+    width: 180px;
+}
+
+.btnArea a.soldbtn {
+    width: 313px;
+}

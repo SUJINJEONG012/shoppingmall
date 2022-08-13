@@ -75,42 +75,166 @@
 
                     <div class="thumbnail-list detail-info">
 
-                        <h2 class="name">[Re-open][OFC]Gold Snap Field Jacket (khaki)</h2>
-                        <div class="priceArea">
-                            <ul class="">
-                                <li class="price">
-                                    <div class="first ProductPrice stri1">
-                                        <p id="span_product_price_text" class="ProductPrice ">222,000 won</p><input
-                                            id="product_price" name="product_price" value="222000" type="hidden">
+                        <!--  -->
+                        <div class="infoArea">
+                            <div id="decolay">
+
+
+
+                                <div class="xans-element- xans-product xans-product-detaildesign">
+                                    <!--
+                                        출력 갯수 지정 변수, 없으면 설정된 전체가 나옵니다.
+                                        count = 10
+                                    -->
+                                    <table border="1" summary="">
+                                        <caption> 기본 정보</caption>
+                                        <tbody>
+                                            <tr style="display:none;" class=" xans-record-">
+                                                <th scope="row"><span
+                                                        style="font-size:12px;color:#000000;font-weight:bold;">상품명</span>
+                                                </th>
+                                                <td><span
+                                                        style="font-size:12px;color:#000000;font-weight:bold;">실키배색밴딩와이드팬츠-pt</span>
+                                                </td>
+                                            </tr>
+                                            <tr class=" xans-record-">
+                                                <th scope="row"><span
+                                                        style="font-size:12px;color:#222222;font-weight:bold;">판매가</span>
+                                                </th>
+                                                <td><span style="font-size:12px;color:#222222;font-weight:bold;"><strong
+                                                            id="span_product_price_text">29,000won</strong><input
+                                                            id="product_price" name="product_price" value=""
+                                                            type="hidden"></span></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- //상세정보 내역 -->
+
+                                <table border="1" summary="">
+                                    <caption>상품 옵션</caption>
+                                    <tbody class="xans-element- xans-product xans-product-option xans-record-">
+                                        <!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
+                                        <tr class="xans-element- xans-product xans-product-option xans-record-">
+                                            <!-- th scope="row">색상</th -->
+                                            <td><select option_product_no="45694"
+                                                    option_select_element="ec-option-select-finder" option_sort_no="1"
+                                                    option_type="T" item_listing_type="S" option_title="색상"
+                                                    product_type="product_option"
+                                                    product_option_area="product_option_45694_0" name="option1"
+                                                    id="product_option_id1" class="ProductOption0" option_style="select"
+                                                    required="true">
+                                                    <option value="*" selected="" link_image="">- [필수] 색상 선택 -</option>
+                                                    <option value="**" disabled="" link_image="">-------------------
+                                                    </option>
+                                                    <option value="네이비(NAVY)" link_image="">네이비(NAVY)</option>
+                                                </select></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+                                <div id="totalProducts" class="">
+
+                                    <table border="1" summary="">
+                                        <caption>상품 목록</caption>
+                                        <colgroup>
+                                            <col style="width:auto;">
+                                            <col style="width:107px;">
+                                            <col style="width:110px;">
+                                        </colgroup>
+
+
+                                        <!-- 참고 : 옵션선택 또는 세트상품 선택시 상품이 추가되는 영역입니다. 쇼핑몰 화면에는 아래와 같은 마크업구조로 표시됩니다. 삭제시 기능이 정상동작 하지 않습니다.-->
+                                        <tbody
+                                            style="position:relative; max-height:116px; overflow-x:hidden; overflow-y:auto; display:table-caption;"
+                                            class="option_products">
+
+                                            <tr class="option_product " data-option-index="1">
+                                                <td><input type="hidden" class="option_box_id" id="option_box1_id"
+                                                        value="" name="item_code[]" data-item-add-option=""
+                                                        data-item-reserved="N" data-option-id="000A"
+                                                        data-option-index="1">
+                                                    <p class="product">실키배색밴딩와이드팬츠-pt<br> - <span>네이비(NAVY)</span></p>
+                                                </td>
+                                                <td><span class="quantity" style="width:65px;"><input type="text"
+                                                            id="option_box1_quantity" name="quantity_opt[]"
+                                                            class="quantity_opt eProductQuantityClass" value="1"
+                                                            product-no="45694">
+                                                        <a href="#none"
+                                                            class="up eProductQuantityUpClass" "="" data-target="
+                                                            option_box1_up">
+                                                            <img src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_up.gif"
+                                                                id="option_box1_up" class="option_box_up"
+                                                                alt="수량증가"></a>
+
+
+                                                        <a href="#none" class="down eProductQuantityDownClass"
+                                                            data-target="option_box1_down"><img
+                                                                src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_down.gif"
+                                                                id="option_box1_down" class="option_box_down"
+                                                                alt="수량감소"></a>
+                                                    </span>
+
+                                                    <a href="#none" class="delete"><img
+                                                            src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
+                                                            alt="삭제" id="option_box1_del" class="option_box_del"></a>
+                                                </td>
+                                                <td class="right"><span id="option_box1_price"><input type="hidden"
+                                                            class="option_box_price" value="29000" product-no="45694"
+                                                            item_code="P000CPPM000A"><span
+                                                            class="ec-front-product-item-price" code="P000CPPM000A"
+                                                            product-no="45694">29,000won</span></span></td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="add_products"></tbody>
+                                        <!-- //참고 -->
+                                    </table>
+                                    <!-- snap review script start contact mail : support@snapvi.co.kr -->
+                                    <div name="snapreview_option_review" class="snap_widget" id="5"><iframe
+                                            id="review_widget5_0" name="review_widget5_0"
+                                            data-url="//sfre-srcs-service.snapfit.co.kr/Draw/draw_review_dependent"
+                                            data-params="{&quot;e&quot;:&quot;%2BZDOSEjuOn3hv8Xuk%2B2SqA%3D%3D&quot;,&quot;d&quot;:&quot;45694&quot;,&quot;b&quot;:&quot;RWzOzDp3wGcrAg2Ef6cnNxMkrB2pMmQOfVNf299LLy06%2F%2Ba3f46UTjhS7AFr9OSG2MQCM%2FPx43ODlr4nuvVzfpp6IMTwVTxfwg6alT7q6EuX4hOeqbNKgeIMX4I0Hp83ln3AuqQJuSwGKTipJP%2FUasyMlSNMFbKtXfi%2BVqyOKxKE8Vk7ynOm%2B6ozzdEcFlcH2Dnrb3JWWpXTbumghl6D6XXcB%2F8qbMGXcbedoVrr%2BmeclukT3YfhWgIQxzLYGo4C&quot;,&quot;a&quot;:&quot;zdCL%2FZgTqKu%2B%2BHHTGa7U1mC8XidXDxGUp0%2BjdjStjKraQQjfaSiWLk5LZFMlRs1w7orJPlkGpVQdIcZPx0qlzagXhua9Ds4eLdx6PxY6TtJJkBSA5i3x7tlr1czTG5SLqupIPpEdi8hVjLvsKd5ZUzkK1Febhwjs5%2BXVsdR2U096FKJvIrFaxIE7pim5YoaKLjKVuJFbqEQgn6onyYzNvw%3D%3D&quot;,&quot;c&quot;:&quot;pc&quot;,&quot;h&quot;:&quot;e&quot;,&quot;f&quot;:&quot;u8jJdit8RZ%2BogSZddOmw8g%3D%3D&quot;,&quot;j&quot;:0,&quot;page&quot;:&quot;1&quot;}"
+                                            scrolling="no" style="width: 100%; height: 0px; border: 0px;"></iframe>
                                     </div>
-                                </li>
-                            </ul>
-                            <ul class="">
-                                <li class="price" colspan="2">
-                                    <div class="ProductPrice salePrice ">199,800 won <span class="saleText"><span
-                                                style="font-size:11px;color:#f50303;">(22,200 won 할인)</span></span>
+                                    <!-- snap review end -->
+
+                                    <table style="margin:5px 0 0;">
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <strong>총 상품금액</strong>(수량) : <span
+                                                        class="total"><strong><em>29,000won</em></strong> (1개)</span>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- //참고 -->
+
+                                <!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
+                                <div class="xans-element- xans-product xans-product-action">
+
+                                    <div class="btnArea">
+                                        <a href="#none" onclick="product_submit(1, '/exec/front/order/basket/', this)"
+                                            class=" buy ">buy it now</a>
+                                        <a id="cartBtn" href="#none"
+                                            onclick="product_submit(2, '/exec/front/order/basket/', this)" class=" ">add
+                                            cart</a>
+
+
                                     </div>
-                                </li>
-                            </ul>
-                            <p class="openDate displaynone"></p>
+
+                                </div>
+                                <!-- //참고 -->
+
+                            </div>
+                            <!-- //decolay -->
                         </div>
-
-
-
-
-
-                        <div class="xans-element- xans-product xans-product-additional otherColor  ">
-                            <a href="#none" class="active" style="background:#2a3828;"></a>
-                        </div>
-
-                        <div class="xans-element- xans-product xans-product-detaildesign displaynone">
-
-
-                        </div>
-
-                        <p class="ec-base-help txtWarn txt11 displaynone"> 수량을 선택해주세요.</p>
-
-
+                        <!--  -->
                     </div>
 
                 </div>
