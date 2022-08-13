@@ -79,36 +79,38 @@
                         <!--  -->
                         <div class="infoArea">
 
-
-                            <h2>판매가격 : <span> 120,000원</span></h2>
-
-
-                            <select name="language" onchange="changeEvent(this)">
-                                <option value="한국어">한국어</option>
-                                <option value="영어">영어</option>
-                                <option value="중국어">중국어</option>
-                                <option value="스페인어">스페인어</option>
-                            </select>
+                            <h2 class="name">Epine Wrap OPS (2color)
+                            </h2>
+                            <p class="price">59,000 won</p>
 
 
+                            <div class="option">
 
-                            <div id="result"></div>
+                                <h3 class="">color</h3>
 
-                            ========================================
-
-                            <div class="wrap__checkout">
-                                <div class="wrap__total total_quantity">
-                                    <span id=" counts">선택수량</span>
-                                    <span id="totalQuantitySpan"></span>
-                                </div>
-                                <div class="wrap__total total_price">
-                                    <span id="totals ">결제금액</span>
-                                    <span id="totalPriceSpan"></span>
-                                </div>
-                                <button type="button" class="btn_line btn_lg payment"
-                                    onclick="goPaymentPage()">결제하기</button>
+                                <select name="language" onchange="changeEvent(this)">
+                                    <option value="한국어">Beige</option>
+                                    <option value="영어">Black</option>
+                                </select>
                             </div>
 
+                            <!-- 결과값 나오는 -->
+                            <div class="result">
+                                ==선택한부분 표시
+                                <h2 class="name">Epine Wrap OPS (2color)
+                                </h2>
+                                <p>Beige</p>
+                                1개 + - 삭제 표시
+                                <p class="price">59,000 won</p>
+
+                                ==선택한부분 표시
+                            </div>
+
+
+                            <div class="total">
+                                <h2>총 상품금액(수량)</h2>
+                                <div>59,000 won <span>(1개)</span></div>
+                            </div>
 
 
                         </div>
