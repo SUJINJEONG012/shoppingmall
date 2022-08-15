@@ -9,6 +9,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../../../images/common/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/board.css">
+
     <link rel="stylesheet" href="../../css/layout.css">
     <link rel="stylesheet" href="../../css/main.css">
 
@@ -70,35 +72,1239 @@
                 <div class="cont-inner">
                     <div class="item-area">
 
-                        <div class="item-cont store">
+                        <div class="item-cont store tbl_head01 tbl_wrap">
                             <h2 class="title">전체주문조회</h2>
 
-                            <table>
-                                <caption>기본정보 설정</caption>
-                                <tbody>
-                                    <tr>
-                                        <th>쇼핑몰명</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>관리자명</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>대표 휴대전화</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>대표 이메일</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">
-                                        </td>
-                                    </tr>
+                            <div class="tbl_head01 tbl_wrap">
 
-                                </tbody>
-                            </table>
+                                <table id="sodr_list">
+                                    <caption>주문 내역 목록</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" rowspan="3">
+                                                <label for="chkall" class="sound_only">주문 전체</label>
+                                                <input type="checkbox" name="chkall" value="1" id="chkall"
+                                                    onclick="check_all(this.form)">
+                                            </th>
+                                            <th scope="col" id="th_ordnum" rowspan="2" colspan="2"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=asc&amp;page=1&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=">주문번호</a>
+                                            </th>
+                                            <th scope="col" id="th_odrer">주문자</th>
+                                            <th scope="col" id="th_odrertel">주문자전화</th>
+                                            <th scope="col" id="th_recvr">받는분</th>
+                                            <th scope="col" rowspan="3">주문합계<br>선불배송비포함</th>
+                                            <th scope="col" rowspan="3">입금합계</th>
+                                            <th scope="col" rowspan="3">주문취소</th>
+                                            <th scope="col" rowspan="3">쿠폰</th>
+                                            <th scope="col" rowspan="3">미수금</th>
+                                            <th scope="col" rowspan="3">보기</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col" id="th_odrid">회원ID</th>
+                                            <th scope="col" id="th_odrcnt">주문상품수</th>
+                                            <th scope="col" id="th_odrall">누적주문수</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col" id="odrstat">주문상태</th>
+                                            <th scope="col" id="odrpay">결제수단</th>
+                                            <th scope="col" id="delino">운송장번호</th>
+                                            <th scope="col" id="delicom">배송회사</th>
+                                            <th scope="col" id="delidate">배송일시</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="orderlist bg0">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[0]" value="2022080814072925"
+                                                    id="od_id_0">
+                                                <label for="chk_0" class="sound_only">주문번호 2022080814072925</label>
+                                                <input type="checkbox" name="chk[]" value="0" id="chk_0">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022080814072925&amp;uid=e36ffb048717c152a818bf10dcba7c9a"
+                                                    class="orderitem">20220808-14072925</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="********** 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span>
+                                                        **********</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A&amp;email=j1teWqZeY5BfX1yPjV8-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A&amp;email=j1teWqZeY5BfX1yPjV8-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">**-****-****</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=**********">**********</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">30,000</td>
+                                            <td rowspan="3" class="td_num_right">30,000</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022080814072925&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022080814072925
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[0]" value="배송">
+                                                배송
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[0]" value="무통장">
+                                                무통장
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg1cancel">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[1]" value="2022080513421499"
+                                                    id="od_id_1">
+                                                <label for="chk_1" class="sound_only">주문번호 2022080513421499</label>
+                                                <input type="checkbox" name="chk[]" value="1" id="chk_1">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022080513421499&amp;uid=d051d9f1db051ad2ce5e8a40203444ab"
+                                                    class="orderitem">20220805-13421499</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="영카트5 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span> 영카트5</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">02-3456-7890</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=영카트5">영카트5</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">238,000</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_numcancel1 td_num">238,000</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022080513421499&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022080513421499
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg1cancel">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg1cancel">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[1]" value="취소">
+                                                취소
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[1]" value="가상계좌">
+                                                가상계좌
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg0">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[2]" value="2022080510585571"
+                                                    id="od_id_2">
+                                                <label for="chk_2" class="sound_only">주문번호 2022080510585571</label>
+                                                <input type="checkbox" name="chk[]" value="2" id="chk_2">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022080510585571&amp;uid=73db50f1905a895913fe513ba245a59b"
+                                                    class="orderitem">20220805-10585571</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="영카트5 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span> 영카트5</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">02-3456-7890</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=영카트5">영카트5</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">748,000</td>
+                                            <td rowspan="3" class="td_num_right">2,000</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">5,000</td>
+                                            <td rowspan="3" class="td_num_right">712,000</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022080510585571&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022080510585571
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[2]" value="입금">
+                                                입금
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[2]"
+                                                    value="inicis_kakaopay">
+                                                카카오페이(KG이니시스)<br>포인트
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg1">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[3]" value="2022080215585719"
+                                                    id="od_id_3">
+                                                <label for="chk_3" class="sound_only">주문번호 2022080215585719</label>
+                                                <input type="checkbox" name="chk[]" value="3" id="chk_3">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022080215585719&amp;uid=2b69ae3f915a51ea0478c4ca3c85157a"
+                                                    class="orderitem">20220802-15585719</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="영카트5 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span> 영카트5</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">02-3456-7890</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=영카트5">영카트5</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">36,000</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">36,000</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022080215585719&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022080215585719
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg1">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg1">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[3]" value="배송">
+                                                배송
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[3]" value="가상계좌">
+                                                가상계좌
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg0cancel">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[4]" value="2022073110361801"
+                                                    id="od_id_4">
+                                                <label for="chk_4" class="sound_only">주문번호 2022073110361801</label>
+                                                <input type="checkbox" name="chk[]" value="4" id="chk_4">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022073110361801&amp;uid=68765f57dc44a6edefd370e049c9c0c8"
+                                                    class="orderitem">20220731-10361801</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="영카트5 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span> 영카트5</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">02-3456-7890</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=영카트5">영카트5</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">149,900</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_numcancel1 td_num">149,900</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022073110361801&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022073110361801
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg0cancel">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg0cancel">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[4]" value="취소">
+                                                취소
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[4]" value="가상계좌">
+                                                가상계좌
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg1">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[5]" value="2022073021522564"
+                                                    id="od_id_5">
+                                                <label for="chk_5" class="sound_only">주문번호 2022073021522564</label>
+                                                <input type="checkbox" name="chk[]" value="5" id="chk_5">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022073021522564&amp;uid=8354daa7f6278950536a9e30fa4a0053"
+                                                    class="orderitem">20220730-21522564</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="********** 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span>
+                                                        **********</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A&amp;email=j1teWqZeY5BfX1yPjV8-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A&amp;email=j1teWqZeY5BfX1yPjV8-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">**-****-****</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=**********">**********</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">35,100</td>
+                                            <td rowspan="3" class="td_num_right">35,100</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022073021522564&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022073021522564
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg1">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg1">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[5]" value="배송">
+                                                배송
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[5]" value="신용카드">
+                                                신용카드
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg0">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[6]" value="2022072914294849"
+                                                    id="od_id_6">
+                                                <label for="chk_6" class="sound_only">주문번호 2022072914294849</label>
+                                                <input type="checkbox" name="chk[]" value="6" id="chk_6">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022072914294849&amp;uid=c5bf6887fc3b2e1e45c6d642c634305e"
+                                                    class="orderitem">20220729-14294849</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name">*********</td>
+                                            <td headers="th_odrertel" class="td_tel">***********</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=*********">*********</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">36,000</td>
+                                            <td rowspan="3" class="td_num_right">35,000</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022072914294849&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022072914294849
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="th_odrid">
+                                                비회원
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">0건</td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[6]" value="입금">
+                                                입금
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[6]" value="가상계좌">
+                                                가상계좌<br>포인트
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg1">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[7]" value="2022072617294361"
+                                                    id="od_id_7">
+                                                <label for="chk_7" class="sound_only">주문번호 2022072617294361</label>
+                                                <input type="checkbox" name="chk[]" value="7" id="chk_7">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022072617294361&amp;uid=b72577c14dd0649e813583cac5654ece"
+                                                    class="orderitem">20220726-17294361</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="영카트5 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span> 영카트5</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">02-3456-7890</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=영카트5">영카트5</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">36,000</td>
+                                            <td rowspan="3" class="td_num_right">36,000</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022072617294361&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022072617294361
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg1">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg1">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[7]" value="입금">
+                                                입금
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[7]" value="신용카드">
+                                                신용카드
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg0cancel">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[8]" value="2022072501035708"
+                                                    id="od_id_8">
+                                                <label for="chk_8" class="sound_only">주문번호 2022072501035708</label>
+                                                <input type="checkbox" name="chk[]" value="8" id="chk_8">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022072501035708&amp;uid=a8ceb09683f262021a4c24224366dce8"
+                                                    class="orderitem">20220725-01035708</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="영카트5 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span> 영카트5</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">02-3456-7890</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=영카트5">영카트5</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">34,000</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_numcancel1 td_num">34,000</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022072501035708&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022072501035708
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg0cancel">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg0cancel">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[8]" value="취소">
+                                                취소
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[8]" value="가상계좌">
+                                                가상계좌
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg1">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[9]" value="2022071515410582"
+                                                    id="od_id_9">
+                                                <label for="chk_9" class="sound_only">주문번호 2022071515410582</label>
+                                                <input type="checkbox" name="chk[]" value="9" id="chk_9">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022071515410582&amp;uid=eb3606f90b5ab0f8d483b6396746adea"
+                                                    class="orderitem">20220715-15410582</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="********** 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span>
+                                                        **********</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A&amp;email=j1teWqZeY5BfX1yPjV8-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A&amp;email=j1teWqZeY5BfX1yPjV8-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">**-****-****</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=**********">**********</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">5,000</td>
+                                            <td rowspan="3" class="td_num_right">5,000</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022071515410582&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022071515410582
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg1">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg1">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[9]" value="완료">
+                                                완료
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[9]" value="신용카드">
+                                                신용카드
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                1234 </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg0">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[10]" value="2022071515155613"
+                                                    id="od_id_10">
+                                                <label for="chk_10" class="sound_only">주문번호 2022071515155613</label>
+                                                <input type="checkbox" name="chk[]" value="10" id="chk_10">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022071515155613&amp;uid=694c16a1f7147fe9982df5c99b26f9ce"
+                                                    class="orderitem">20220715-15155613</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="영카트5 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span> 영카트5</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">02-3456-7890</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=영카트5">영카트5</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">5,100</td>
+                                            <td rowspan="3" class="td_num_right">3,000</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">2,000</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022071515155613&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022071515155613
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[10]" value="완료">
+                                                완료
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[10]" value="가상계좌">
+                                                가상계좌<br>포인트
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg1cancel">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[11]" value="2022071418090488"
+                                                    id="od_id_11">
+                                                <label for="chk_11" class="sound_only">주문번호 2022071418090488</label>
+                                                <input type="checkbox" name="chk[]" value="11" id="chk_11">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022071418090488&amp;uid=83a70cd34b117dc82ce8cf9351c63a0d"
+                                                    class="orderitem">20220714-18090488</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="영카트5 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span> 영카트5</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">02-3456-7890</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=영카트5">영카트5</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">33,100</td>
+                                            <td rowspan="3" class="td_num_right">35,100</td>
+                                            <td rowspan="3" class="td_numcancel1 td_num">33,100</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">-35,100</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022071418090488&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022071418090488
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg1cancel">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg1cancel">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[11]" value="취소">
+                                                취소
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[11]" value="가상계좌">
+                                                가상계좌
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg0">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[12]" value="2022071409555276"
+                                                    id="od_id_12">
+                                                <label for="chk_12" class="sound_only">주문번호 2022071409555276</label>
+                                                <input type="checkbox" name="chk[]" value="12" id="chk_12">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022071409555276&amp;uid=2df35f2d9686dcca97d950fe557afb0a"
+                                                    class="orderitem">20220714-09555276</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="영카트5 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span> 영카트5</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">02-3456-7890</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=영카트5">영카트5</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">36,000</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">36,000</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022071409555276&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022071409555276
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[12]" value="주문">
+                                                주문
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[12]" value="가상계좌">
+                                                가상계좌
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg1">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[13]" value="2022071323284450"
+                                                    id="od_id_13">
+                                                <label for="chk_13" class="sound_only">주문번호 2022071323284450</label>
+                                                <input type="checkbox" name="chk[]" value="13" id="chk_13">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022071323284450&amp;uid=910517809522dc582869c03d146c9d01"
+                                                    class="orderitem">20220713-23284450</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name">*********</td>
+                                            <td headers="th_odrertel" class="td_tel">***</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=*********">*********</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">36,100</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">36,100</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022071323284450&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022071323284450
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg1">
+                                            <td headers="th_odrid">
+                                                비회원
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">0건</td>
+                                        </tr>
+                                        <tr class="bg1">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[13]" value="주문">
+                                                주문
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[13]" value="가상계좌">
+                                                가상계좌
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                        <tr class="orderlist bg0">
+                                            <td rowspan="3" class="td_chk">
+                                                <input type="hidden" name="od_id[14]" value="2022071223393370"
+                                                    id="od_id_14">
+                                                <label for="chk_14" class="sound_only">주문번호 2022071223393370</label>
+                                                <input type="checkbox" name="chk[]" value="14" id="chk_14">
+                                            </td>
+                                            <td headers="th_ordnum" class="td_odrnum2" rowspan="2" colspan="2">
+                                                <a href="https://demo.sir.kr/gnuboard5/shop/orderinquiryview.php?od_id=2022071223393370&amp;uid=fd5cc488c36a31b597ad23404fb00be5"
+                                                    class="orderitem">20220712-23393370</a>
+                                                <span class="list_test">테스트</span>
+                                            </td>
+                                            <td headers="th_odrer" class="td_name"><span class="sv_wrap">
+                                                    <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                        class="sv_member" title="영카트5 자기소개" target="_blank"
+                                                        rel="nofollow" onclick="return false;"><span
+                                                            class="profile_img"><img
+                                                                src="https://demo.sir.kr/gnuboard5/img/no_profile.gif"
+                                                                alt="no_profile" width="22" height="22"></span> 영카트5</a>
+                                                    <span class="sv">
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                            onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                            onclick="win_email(this.href); return false;">메일보내기</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                            onclick="win_profile(this.href); return false;">자기소개</a>
+                                                        <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                            class="link_new_page"
+                                                            onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                    </span>
+
+                                                    <noscript class="sv_nojs"><span class="sv">
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/memo_form.php?me_recv_mb_id=youngcart5"
+                                                                onclick="win_memo(this.href); return false;">쪽지보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/formmail.php?mb_id=youngcart5&amp;name=%EC%98%81%EC%B9%B4%ED%8A%B85&amp;email=uZanpKaontmpX6bK1qk-"
+                                                                onclick="win_email(this.href); return false;">메일보내기</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/profile.php?mb_id=youngcart5"
+                                                                onclick="win_profile(this.href); return false;">자기소개</a>
+                                                            <a href="https://demo.sir.kr/gnuboard5/bbs/new.php?mb_id=youngcart5"
+                                                                class="link_new_page"
+                                                                onclick="check_goto_new(this.href, event);">전체게시물</a>
+                                                        </span>
+                                                    </noscript></span></td>
+                                            <td headers="th_odrertel" class="td_tel">02-3456-7890</td>
+                                            <td headers="th_recvr" class="td_name"><a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=od_b_name&amp;search=영카트5">영카트5</a>
+                                            </td>
+                                            <td rowspan="3" class="td_num td_numsum">36,000</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_numcancel0 td_num">0</td>
+                                            <td rowspan="3" class="td_num_right">0</td>
+                                            <td rowspan="3" class="td_num_right">36,000</td>
+                                            <td rowspan="3" class="td_mng td_mng_s">
+                                                <a href="./orderform.php?od_id=2022071223393370&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=&amp;sort1=od_id&amp;sort2=desc&amp;page=1"
+                                                    class="mng_mod btn btn_02"><span class="sound_only">2022071223393370
+                                                    </span>보기</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="th_odrid">
+                                                <a
+                                                    href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=desc&amp;sel_field=mb_id&amp;search=youngcart5">youngcart5</a>
+                                            </td>
+                                            <td headers="th_odrcnt">1건</td>
+                                            <td headers="th_odrall">4108건</td>
+                                        </tr>
+                                        <tr class="bg0">
+                                            <td headers="odrstat" class="odrstat">
+                                                <input type="hidden" name="current_status[14]" value="주문">
+                                                주문
+                                            </td>
+                                            <td headers="odrpay" class="odrpay">
+                                                <input type="hidden" name="current_settle_case[14]" value="가상계좌">
+                                                가상계좌
+                                            </td>
+                                            <td headers="delino" class="delino">
+                                                - </td>
+                                            <td headers="delicom">
+                                                - </td>
+                                            <td headers="delidate">
+                                                - </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="orderlist">
+                                            <th scope="row" colspan="3">&nbsp;</th>
+                                            <td>&nbsp;</td>
+                                            <td>15건</td>
+                                            <th scope="row">합 계</th>
+                                            <td>1,494,300</td>
+                                            <td>181,200</td>
+                                            <td>455,000</td>
+                                            <td>5,000</td>
+                                            <td>823,000</td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+
+
                         </div>
                         <!-- 01 -->
 

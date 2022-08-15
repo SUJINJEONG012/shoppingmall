@@ -162,6 +162,81 @@
 
 /*  table  */
 
+
+/* thead 한 줄 테이블 */
+.tbl_head01 {}
+
+.tbl_head01 table {
+    clear: both;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+.tbl_head01 thead th {
+    background: #6f809a;
+    color: #fff;
+    border: 1px solid #60718b;
+    font-weight: normal;
+    text-align: center;
+    padding: 8px 5px;
+    font-size: 0.92em
+}
+
+.tbl_head01 thead th a {
+    color: #fff
+}
+
+.tbl_head01 thead input {
+    vertical-align: top
+}
+
+/* middle 로 하면 게시판 읽기에서 목록 사용시 체크박스 라인 깨짐 */
+.tbl_head01 thead a {
+    color: #383838;
+    text-decoration: underline
+}
+
+.tbl_head01 tbody th {
+    border: 1px solid #d6dce7;
+    padding: 5px;
+    text-align: center
+}
+
+.tbl_head01 tbody td {
+    border: 1px solid #d6dce7;
+    padding: 5px;
+    text-align: center
+}
+
+.tbl_head01 tbody tr:nth-child(even) {
+    background: #eff3f9
+}
+
+.tbl_head01 tbody td .frm_input {
+    width: 100%;
+}
+
+.tbl_head01 tbody td select {
+    width: 100%
+}
+
+.tbl_head01 table .tbl_input {
+    height: 27px;
+    line-height: 25px;
+    border: 1px solid #d5d5d5;
+    width: 100%
+}
+
+.tbl_head01 table select {
+    height: 27px;
+    line-height: 25px;
+    width: 100%;
+}
+
+
+
+
 /* 게시판 목록 */
 #bo_list {
     position: relative;

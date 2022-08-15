@@ -156,11 +156,12 @@
     margin-bottom: 53px;
 }
 
+/* 
 .content .item-cont table {
     border-top: 1px solid #e2e5ea;
     line-height: 16px;
     background-color: #fff;
-}
+} */
 
 /* 공통 */
 .content .item-cont table th,
@@ -174,8 +175,6 @@
 
 
 .content .item-cont table th {
-    width: 200px;
-    background-color: #fff;
     font-weight: 500;
     padding: 15px;
 }
