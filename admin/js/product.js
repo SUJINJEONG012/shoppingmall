@@ -6,7 +6,7 @@ const main__titles = document.querySelector('.main__title');
 const add__btn = document.querySelector('.add-btn');
 const add = document.querySelector('.add');
 
-let todoList = document.getElementById('todo__list').value;
+let groupCate = document.getElementById('group_cate').value;
 
 let inputButton = document.querySelector('.input__button');
 inputButton.addEventListener('click', addTodoSlom);
@@ -60,7 +60,7 @@ function addTodo() {
     deleteBtn.textContent = '제거하기';
 
 
-    // addBtn을 클릭하면 addBtn에 active 클래스를 토글
+    //addBtn을 클릭하면 addBtn에 active 클래스를 토글
     addBtn.addEventListener('click', () => {
         // depInput.classList.toggle('active');
         const li = document.createElement("li");
@@ -72,20 +72,11 @@ function addTodo() {
 
 
 
-    //수정하기
-    modifyBtn.addEventListener('click', modifyTodo);
-    function modifyTodo(event) {
-        const list = event.target.parentElement;
-        if (confirm('정말 수정하시겠습니까?') === true) {
-            list.remove();
-        } else { //취소
-            return;
-        }
-    }
 
     //삭제하기함수
-    deleteBtn.addEventListener('click', dleeteTodo);
-    function dleeteTodo(event) {
+    deleteBtn.addEventListener('click', depthDelete);
+    console.log(deleteBtn);
+    function depthDelete(event) {
         const list = event.target.parentElement;
         if (confirm('정말 삭제하시겠습니까?') === true) {
             list.remove();
@@ -93,15 +84,23 @@ function addTodo() {
             return;
         }
     }
+
+
+
+
     // addEventListener(이벤트유형, 이벤트인터페이스를 구현할 "객체" 또는 "함수")
 
 } //addTodo 함수 끝
+
+
+
+
 
 // 슬롬 카테고리 추가하는 부분
 // 실제로는 통신으로 서버로 요청 후 응답데이터를 받는다. 받는 데이터 양식이 {"idx" : 1, "name" : "상위 카테고리1"} 이런 형식일 것이다. 아직은 통신하지 않으므로 임시로 index를 스크립트에 정의함
 let index = 0;
 
-function addTodoSlom(){
+function addTodoSlom() {
     index++;
     const todo = document.querySelector('.todoItem').value;
 
@@ -110,21 +109,33 @@ function addTodoSlom(){
     let html = `<li id="todo_li_${index}">${todo}
                     <div class="modbtn">
                         <div class="add_btn" id="depth_add_btn_${index}" onclick="depthInputAdd(${index})">추가하기</div>
-                        <div class="modify_btn" id="modify_btn_${index}">수정하기</div>
-                        <div class="delete_btn" id="delete_btn_${index}">제거하기</div>
+                        <div class="modify_btn" id="modify_btn_${index}" onclick="depthModify(${index})">수정하기</div>
+                        <div class="delete_btn" id="delete_btn_${index}" onclick="depthDelete(${index})">제거하기</div>
                     </div>
                 </li>`;
     todoListUl.insertAdjacentHTML("beforeend", html);
+
+
+
+
+
 }
 
-function depthInputAdd(num){
+
+
+
+
+
+
+
+function depthInputAdd(num) {
     const refLi = document.getElementById(`todo_li_${num}`);
     let listSub = document.getElementById(`list_sub_${num}`);
-    if(listSub == null){
-        let html = `<li id="list_sub_${num}">
+    if (listSub == null) {
+        let html = `<div id="list_sub_${num}">
                         <ul class="list_sub_ul">
                         </ul>
-                     </li>`;
+                     </div>`;
         refLi.insertAdjacentHTML("afterend", html);
         listSub = document.getElementById(`list_sub_${num}`);
     }
@@ -143,7 +154,12 @@ function depthInputAdd(num){
     listSubUl.insertAdjacentHTML("beforeend", html);
 }
 
-function depthAdd(e){
+
+
+
+
+
+function depthAdd(e) {
     // console.log(e);
     let parentDiv = e.parentNode;
     // console.log(parentDiv)
