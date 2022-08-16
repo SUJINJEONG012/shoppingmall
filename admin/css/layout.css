@@ -228,11 +228,15 @@
     position: relative;
     cursor: pointer;
     margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
 
 }
 
 .main__title h1 {
-    font-size: 45px;
+    font-size: 30px;
     font-weight: 700;
 }
 
@@ -262,15 +266,15 @@ input {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 15px 30px;
     border-bottom: 1px dashed #d4d4d4;
 }
 
-.todolist__wrap li .test {
-    display: none;
+.modbtn {
+    display: flex;
+
 }
 
-.todolist__wrap li:hover .test {
-    display: block;
+.modbtn>div {
+    padding-left: 10px;
 }
