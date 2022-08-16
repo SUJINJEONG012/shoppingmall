@@ -9,7 +9,7 @@ const add = document.querySelector('.add');
 let todoList = document.getElementById('todo__list').value;
 
 let inputButton = document.querySelector('.input__button');
-inputButton.addEventListener('click', addTodo);
+inputButton.addEventListener('click', addTodoSlom);
 
 
 // add__btn을 클릭하면  add__btn에  active 클래스를 토글
@@ -37,7 +37,8 @@ function addTodo() {
     modifyBtn.className = 'modify_btn';
     deleteBtn.className = 'delete_btn'; //클래스이름 생성
 
-    depInput.classList = 'depth_input';
+    //depInput.classList = 'depth_input';
+    depInput.className = 'depth_input';
 
 
 
@@ -61,7 +62,12 @@ function addTodo() {
 
     // addBtn을 클릭하면 addBtn에 active 클래스를 토글
     addBtn.addEventListener('click', () => {
-        depInput.classList.toggle('active');
+        // depInput.classList.toggle('active');
+        const li = document.createElement("li");
+        const depInput = document.createElement('input');
+        depInput.className = 'depth_input';
+        li.appendChild(depInput);
+        document.getElementById("todo__list").appendChild(li);
     });
 
 
@@ -90,3 +96,67 @@ function addTodo() {
     // addEventListener(이벤트유형, 이벤트인터페이스를 구현할 "객체" 또는 "함수")
 
 } //addTodo 함수 끝
+
+// 슬롬 카테고리 추가하는 부분
+// 실제로는 통신으로 서버로 요청 후 응답데이터를 받는다. 받는 데이터 양식이 {"idx" : 1, "name" : "상위 카테고리1"} 이런 형식일 것이다. 아직은 통신하지 않으므로 임시로 index를 스크립트에 정의함
+let index = 0;
+
+function addTodoSlom(){
+    index++;
+    const todo = document.querySelector('.todoItem').value;
+
+    const todoListUl = document.getElementById("todo__list");
+
+    let html = `<li id="todo_li_${index}">${todo}
+                    <div class="modbtn">
+                        <div class="add_btn" id="depth_add_btn_${index}" onclick="depthInputAdd(${index})">추가하기</div>
+                        <div class="modify_btn" id="modify_btn_${index}">수정하기</div>
+                        <div class="delete_btn" id="delete_btn_${index}">제거하기</div>
+                    </div>
+                </li>`;
+    todoListUl.insertAdjacentHTML("beforeend", html);
+}
+
+function depthInputAdd(num){
+    const refLi = document.getElementById(`todo_li_${num}`);
+    let listSub = document.getElementById(`list_sub_${num}`);
+    if(listSub == null){
+        let html = `<li id="list_sub_${num}">
+                        <ul class="list_sub_ul">
+                        </ul>
+                     </li>`;
+        refLi.insertAdjacentHTML("afterend", html);
+        listSub = document.getElementById(`list_sub_${num}`);
+    }
+
+    let listSubUl = listSub.getElementsByClassName('list_sub_ul')[0];
+
+    let html = `<li id="list_sub_li">
+                        <div class="depth_input_container">
+                            <input type="text" class="depth_input"/>
+                            <button type="button" class="input__button" onclick="depthAdd(this)">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                </li>`
+
+    listSubUl.insertAdjacentHTML("beforeend", html);
+}
+
+function depthAdd(e){
+    // console.log(e);
+    let parentDiv = e.parentNode;
+    // console.log(parentDiv)
+    let inputValue = parentDiv.getElementsByClassName('depth_input')[0].value;
+    // console.log(inputValue);
+
+    let html = `<li id="todo_sub_li_${index}">${inputValue}
+                    <div class="modbtn">
+                        <div class="modify_btn" id="modify_btn_${index}">수정하기</div>
+                        <div class="delete_btn" id="delete_btn_${index}">제거하기</div>
+                    </div>
+                </li>`;
+
+    parentDiv.insertAdjacentHTML("afterend", html);
+    parentDiv.remove();
+}
