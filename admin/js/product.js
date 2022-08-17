@@ -119,7 +119,7 @@ function addTodoSlom() {
 
 
 
-function categoryModify(index){
+function categoryModify(index) {
     const todoLi = document.getElementById(`todo_li_${index}`);
     let text = document.getElementById(`todo_text_${index}`).innerText;
     console.log(text);
@@ -130,8 +130,8 @@ function categoryModify(index){
                 </div>`;
 
     // 자식 노드 전부 삭제
-    while(todoLi.hasChildNodes()){
-        todoLi.removeChild( todoLi.firstChild );
+    while (todoLi.hasChildNodes()) {
+        todoLi.removeChild(todoLi.firstChild);
     }
 
     todoLi.insertAdjacentHTML("beforeend", html);
@@ -143,11 +143,11 @@ function categoryModify(index){
     btnCancel.addEventListener("click", ev => modifyCancel(index, text));
 }
 
-function modifyConfirm(index){
+function modifyConfirm(index) {
     const todoLi = document.getElementById(`todo_li_${index}`);
     let modifyInputValue = document.getElementById(`category_modify_input_${index}`).value;
-    while(todoLi.hasChildNodes()){
-        todoLi.removeChild( todoLi.firstChild );
+    while (todoLi.hasChildNodes()) {
+        todoLi.removeChild(todoLi.firstChild);
     }
 
     let html = `<div id="todo_text_${index}">${modifyInputValue}</div>
@@ -160,10 +160,10 @@ function modifyConfirm(index){
     todoLi.insertAdjacentHTML("beforeend", html);
 }
 
-function modifyCancel(index, value){
+function modifyCancel(index, value) {
     const todoLi = document.getElementById(`todo_li_${index}`);
-    while(todoLi.hasChildNodes()){
-        todoLi.removeChild( todoLi.firstChild );
+    while (todoLi.hasChildNodes()) {
+        todoLi.removeChild(todoLi.firstChild);
     }
 
     let html = `<div id="todo_text_${index}">${value}</div>
@@ -176,7 +176,7 @@ function modifyCancel(index, value){
     todoLi.insertAdjacentHTML("beforeend", html);
 }
 
-function categoryDelete(index){
+function categoryDelete(index) {
     const todoLi = document.getElementById(`todo_li_${index}`);
     todoLi.remove();
 }
@@ -227,24 +227,24 @@ function depthAdd(e) {
     todoSubLi.remove();
 }
 
-function depthDelete(e){
+function depthDelete(e) {
     let todoSubLi = e.parentNode.parentNode;
     let listSubUl = todoSubLi.parentNode;
     todoSubLi.remove();
-    if(!listSubUl.hasChildNodes()){
+    if (!listSubUl.hasChildNodes()) {
         let listSubLi = listSubUl.parentNode;
         listSubLi.remove();
     }
 }
 
-function depthModify(e){
+function depthModify(e) {
     let todoSubLi = e.parentNode.parentNode;
     let textDiv = todoSubLi.getElementsByClassName('depth_text')[0];
     let value = textDiv.innerText;
     console.log(value);
 
-    while(todoSubLi.hasChildNodes()){
-        todoSubLi.removeChild( todoSubLi.firstChild );
+    while (todoSubLi.hasChildNodes()) {
+        todoSubLi.removeChild(todoSubLi.firstChild);
     }
 
     let html = `<input type="text" class="depth_input" value="${value}"/>
@@ -261,11 +261,11 @@ function depthModify(e){
     btnCancel.addEventListener("click", ev => depthModifyCancel(todoSubLi, value));
 }
 
-function depthModifyConfirm(todoSubLi){
+function depthModifyConfirm(todoSubLi) {
     let modifyInputValue = todoSubLi.getElementsByClassName('depth_input')[0].value;
     console.log(modifyInputValue);
-    while(todoSubLi.hasChildNodes()){
-        todoSubLi.removeChild( todoSubLi.firstChild );
+    while (todoSubLi.hasChildNodes()) {
+        todoSubLi.removeChild(todoSubLi.firstChild);
     }
 
     let html = `<div class="depth_text">${modifyInputValue}</div>
@@ -277,10 +277,10 @@ function depthModifyConfirm(todoSubLi){
     todoSubLi.insertAdjacentHTML("beforeend", html);
 }
 
-function depthModifyCancel(todoSubLi, value){
+function depthModifyCancel(todoSubLi, value) {
     console.log('취소');
-    while(todoSubLi.hasChildNodes()){
-        todoSubLi.removeChild( todoSubLi.firstChild );
+    while (todoSubLi.hasChildNodes()) {
+        todoSubLi.removeChild(todoSubLi.firstChild);
     }
 
     let html = `<div class="depth_text">${value}</div>
