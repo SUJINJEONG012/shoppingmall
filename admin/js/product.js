@@ -9,7 +9,7 @@ const add = document.querySelector('.add');
 let groupCate = document.getElementById('group_cate').value;
 
 let inputButton = document.querySelector('.input__button');
-inputButton.addEventListener('click', addTodoSlom);
+inputButton.addEventListener('click', addTodoSlom); /// TODO : 나중에 통신하는 버전으로 변경하기
 
 
 // add__btn을 클릭하면  add__btn에  active 클래스를 토글
@@ -116,7 +116,6 @@ function addTodoSlom() {
                 </li>`;
     todoListUl.insertAdjacentHTML("beforeend", html);
 }
-
 
 
 function categoryModify(index) {
@@ -239,8 +238,7 @@ function depthDelete(e) {
 
 function depthModify(e) {
     let todoSubLi = e.parentNode.parentNode;
-    let textDiv = todoSubLi.getElementsByClassName('depth_text')[0];
-    let value = textDiv.innerText;
+    let value = todoSubLi.getElementsByClassName('depth_text')[0].innerText;
     console.log(value);
 
     while (todoSubLi.hasChildNodes()) {
@@ -292,4 +290,365 @@ function depthModifyCancel(todoSubLi, value) {
     console.log(html);
 
     todoSubLi.insertAdjacentHTML("beforeend", html);
+}
+
+
+////////////////////////////////////////////////////////
+// 통신하는 부분
+let render = (category) => {
+    const todoListUl = document.getElementById("todo__list");
+
+    for (const index in category){
+        console.log(category[index]);
+        let html = `<li id="todo_li_${category[index].idx}">
+                    <div id="todo_text_${category[index].idx}">${category[index].name}</div>
+                    <div class="modbtn">
+                        <div class="add_btn" id="depth_add_btn_${category[index].idx}" onclick="depthInputAddNetwork(${category[index].idx})">추가하기</div>
+                        <div class="modify_btn" id="modify_btn_${category[index].idx}" onclick="categoryModifyNetwork(${category[index].idx})">수정하기</div>
+                        <div class="delete_btn" id="delete_btn_${category[index].idx}" onclick="categoryDeleteNetwork(${category[index].idx})">제거하기</div>
+                    </div>
+                </li>`;
+        todoListUl.insertAdjacentHTML("beforeend", html);
+
+        if(category[index].subCategory.length !== 0){
+            const todoLi = document.getElementById(`todo_li_${category[index].idx}`);
+            for (const subIndex in category[index].subCategory){
+                /// subIndex의 타입이 string
+                if(subIndex === '0'){
+                    console.log('fdfdfd');
+                    let html = `<li id="list_sub_${category[index].idx}">
+                        <ul class="list_sub_ul" id="list_sub_ul_${category[index].idx}"></ul>
+                     </li>`;
+
+                    console.log(html);
+                    todoLi.insertAdjacentHTML("afterend", html);
+                }
+                const listSubUl = document.getElementById(`list_sub_ul_${category[index].idx}`);
+                let html = `<li class="todo_sub_li">
+                    <div class="depth_text">${category[index].subCategory[subIndex].name}</div>
+                    <div class="modbtn">
+                        <div class="modify_btn" onclick="depthModifyNetwork(this, ${category[index].subCategory[subIndex].idx})">수정하기</div>
+                        <div class="delete_btn" onclick="depthDeleteNetwork(this, ${category[index].subCategory[subIndex].idx})">제거하기</div>
+                    </div>
+                </li>`;
+                listSubUl.insertAdjacentHTML("beforeend", html);
+            }
+        }
+
+    }
+}
+
+/// 카테고리 등록 통신하는버전
+function addCategory() {
+
+    const category = document.querySelector('.todoItem').value;
+
+    let data = {name : category}
+
+    fetch(`http://121.145.8.135:8080/v1/api/admin/product/category/main`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            if(res.code === 200){
+                console.log(res.content);
+                const todoListUl = document.getElementById("todo__list");
+
+                let html = `<li id="todo_li_${res.content.idx}">
+                    <div id="todo_text_${res.content.idx}">${res.content.name}</div>
+                    <div class="modbtn">
+                        <div class="add_btn" id="depth_add_btn_${res.content.idx}" onclick="depthInputAddNetwork(${res.content.idx})">추가하기</div>
+                        <div class="modify_btn" id="modify_btn_${res.content.idx}" onclick="categoryModifyNetwork(${res.content.idx})">수정하기</div>
+                        <div class="delete_btn" id="delete_btn_${res.content.idx}" onclick="categoryDeleteNetwork(${res.content.idx})">제거하기</div>
+                    </div>
+                </li>`;
+                todoListUl.insertAdjacentHTML("beforeend", html);
+            } else {
+                alert("잠시 후 다시 시도해주세요");
+            }
+        });
+}
+
+function categoryModifyNetwork(idx) {
+    let todoLi = document.getElementById(`todo_li_${idx}`);
+    let text = document.getElementById(`todo_text_${idx}`).innerText;
+    console.log(text);
+    let html = `<input type="text" id="category_modify_input_${idx}" value="${text}"/>
+                <div class="modbtn">
+                    <div class="btn_confirm" id="btn_confirm_${idx}">확인</div>
+                    <div class="btn_cancel" id="btn_cancel_${idx}">취소</div>
+                </div>`;
+
+    // 자식 노드 전부 삭제
+    while (todoLi.hasChildNodes()) {
+        todoLi.removeChild(todoLi.firstChild);
+    }
+
+    todoLi.insertAdjacentHTML("beforeend", html);
+
+    let btnConfirm = document.getElementById(`btn_confirm_${idx}`);
+    btnConfirm.addEventListener("click", ev => modifyConfirmNetwork(idx));
+
+    let btnCancel = document.getElementById(`btn_cancel_${idx}`);
+    btnCancel.addEventListener("click", ev => modifyCancelNetwork(idx, text));
+}
+
+function modifyConfirmNetwork(idx) {
+    let todoLi = document.getElementById(`todo_li_${idx}`);
+    let modifyInputValue = document.getElementById(`category_modify_input_${idx}`).value;
+
+
+    let data = {idx : idx, name : modifyInputValue}
+
+    console.log(data);
+
+    fetch(`http://121.145.8.135:8080/v1/api/admin/product/category/main`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            if(res.code === 200){
+                console.log(res.content);
+                while (todoLi.hasChildNodes()) {
+                    todoLi.removeChild(todoLi.firstChild);
+                }
+
+                let html = `<div id="todo_text_${res.content.idx}">${res.content.name}</div>
+                    <div class="modbtn">
+                        <div class="add_btn" id="depth_add_btn_${res.content.idx}" onclick="depthInputAddNetwork(${res.content.idx})">추가하기</div>
+                        <div class="modify_btn" id="modify_btn_${res.content.idx}" onclick="categoryModifyNetwork(${res.content.idx})">수정하기</div>
+                        <div class="delete_btn" id="delete_btn_${res.content.idx}" onclick="categoryDeleteNetwork(${res.content.idx})">제거하기</div>
+                    </div>`;
+
+                todoLi.insertAdjacentHTML("beforeend", html);
+            } else {
+                alert("잠시 후 다시 시도해주세요");
+            }
+        });
+}
+
+function modifyCancelNetwork(index, value) {
+    let todoLi = document.getElementById(`todo_li_${index}`);
+    while (todoLi.hasChildNodes()) {
+        todoLi.removeChild(todoLi.firstChild);
+    }
+
+    let html = `<div id="todo_text_${index}">${value}</div>
+                    <div class="modbtn">
+                        <div class="add_btn" id="depth_add_btn_${index}" onclick="depthInputAddNetwork(${index})">추가하기</div>
+                        <div class="modify_btn" id="modify_btn_${index}" onclick="categoryModifyNetwork(${index})">수정하기</div>
+                        <div class="delete_btn" id="delete_btn_${index}" onclick="categoryDeleteNetwork(${index})">제거하기</div>
+                    </div>`;
+
+    todoLi.insertAdjacentHTML("beforeend", html);
+}
+
+function categoryDeleteNetwork(idx) {
+    fetch(`http://121.145.8.135:8080/v1/api/admin/product/category/main/${idx}`, {
+        method: "DELETE",
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            if(res.code === 200){
+                console.log(res);
+                let todoLi = document.getElementById(`todo_li_${idx}`);
+                todoLi.remove();
+                let listSub = document.getElementById(`list_sub_${idx}`);
+                if(listSub != null){
+                    listSub.remove();
+                }
+            } else {
+                alert("잠시 후 다시 시도해주세요");
+            }
+        });
+}
+
+
+/// 하위 카테고리
+function depthInputAddNetwork(idx) {
+    let todoLi = document.getElementById(`todo_li_${idx}`);
+    let listSub = document.getElementById(`list_sub_${idx}`);
+    if (listSub == null) {
+        let html = `<li id="list_sub_${idx}">
+                        <ul class="list_sub_ul"></ul>
+                     </li>`;
+        todoLi.insertAdjacentHTML("afterend", html);
+        listSub = document.getElementById(`list_sub_${idx}`);
+    }
+
+    let listSubUl = listSub.getElementsByClassName('list_sub_ul')[0];
+
+    console.log(listSubUl);
+
+    let html = `<li class="todo_sub_li" id="todo_sub_li_${idx}">
+                            <input type="text" class="depth_input"/>
+                            <div class="modbtn">
+                                <div class="btn_confirm" id="btn_confirm_${idx}" onclick="depthAddNetwork(${idx})">확인</div>
+                                <div class="btn_cancel" id="btn_cancel_${idx}" onclick="depthCancelNetwork(this)">취소</div>
+                            </div>
+                </li>`
+
+    listSubUl.insertAdjacentHTML("beforeend", html);
+}
+
+
+function depthAddNetwork(idx) {
+
+    let todoSubLi = document.getElementById(`todo_sub_li_${idx}`);
+    let inputValue = todoSubLi.getElementsByClassName('depth_input')[0].value;
+
+    let data = {name : inputValue, categoryIdx : idx};
+
+    fetch(`http://121.145.8.135:8080/v1/api/admin/product/category/sub`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            if(res.code === 200){
+                console.log(res.content);
+                let html = `<li class="todo_sub_li" id="todo_sub_li_${res.content.idx}">
+                    <div class="depth_text">${res.content.name}</div>
+                    <div class="modbtn">
+                        <div class="modify_btn" onclick="depthModifyNetwork(this, ${res.content.idx})">수정하기</div>
+                        <div class="delete_btn" onclick="depthDeleteNetwork(this, ${res.content.idx})">제거하기</div>
+                    </div>
+                </li>`;
+
+                todoSubLi.insertAdjacentHTML("afterend", html);
+                todoSubLi.remove();
+            } else {
+                alert("잠시 후 다시 시도해주세요");
+            }
+        });
+}
+
+function depthCancelNetwork(e) {
+    let todoSubLi = e.parentNode.parentNode;
+    let listSubUl = todoSubLi.parentNode;
+    todoSubLi.remove();
+    if (!listSubUl.hasChildNodes()) {
+        let listSubLi = listSubUl.parentNode;
+        listSubLi.remove();
+    }
+}
+
+function depthModifyNetwork(e, idx) {
+    let todoSubLi = e.parentNode.parentNode;
+    let value = todoSubLi.getElementsByClassName('depth_text')[0].innerText;
+    console.log(value);
+
+    while (todoSubLi.hasChildNodes()) {
+        todoSubLi.removeChild(todoSubLi.firstChild);
+    }
+
+    let html = `<input type="text" class="depth_input" value="${value}"/>
+                <div class="modbtn">
+                    <div class="confirm_btn">확인</div>
+                    <div class="cancel_btn">취소</div>
+                </div>`
+    todoSubLi.insertAdjacentHTML("beforeend", html);
+
+    let btnConfirm = todoSubLi.getElementsByClassName('confirm_btn')[0];
+    btnConfirm.addEventListener("click", ev => depthModifyConfirmNetwork(todoSubLi, idx));
+
+    let btnCancel = todoSubLi.getElementsByClassName('cancel_btn')[0];
+    btnCancel.addEventListener("click", ev => depthModifyCancelNetwork(todoSubLi, value, idx));
+}
+
+function depthModifyConfirmNetwork(todoSubLi, idx) {
+    let modifyInputValue = todoSubLi.getElementsByClassName('depth_input')[0].value;
+    console.log(modifyInputValue);
+
+    let data = {idx : idx, name : modifyInputValue};
+
+    fetch(`http://121.145.8.135:8080/v1/api/admin/product/category/sub`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            if(res.code === 200){
+                console.log(res.content);
+                while (todoSubLi.hasChildNodes()) {
+                    todoSubLi.removeChild(todoSubLi.firstChild);
+                }
+                let html = `<div class="depth_text">${res.content.name}</div>
+                    <div class="modbtn">
+                        <div class="modify_btn" onclick="depthModifyNetwork(this, ${res.content.idx})">수정하기</div>
+                        <div class="delete_btn" onclick="depthDeleteNetwork(this, ${res.content.id})">제거하기</div>
+                    </div>`;
+
+                todoSubLi.insertAdjacentHTML("beforeend", html);
+            } else {
+                alert("잠시 후 다시 시도해주세요");
+            }
+        });
+}
+
+function depthModifyCancelNetwork(todoSubLi, value, idx) {
+    console.log('취소');
+    while (todoSubLi.hasChildNodes()) {
+        todoSubLi.removeChild(todoSubLi.firstChild);
+    }
+
+    let html = `<div class="depth_text">${value}</div>
+                <div class="modbtn">
+                    <div class="modify_btn" onclick="depthModifyNetwork(this, ${idx})">수정하기</div>
+                    <div class="delete_btn" onclick="depthDeleteNetwork(this, ${idx})">제거하기</div>
+                </div>`;
+
+    console.log(html);
+
+    todoSubLi.insertAdjacentHTML("beforeend", html);
+}
+
+function depthDeleteNetwork(e, idx) {
+    fetch(`http://121.145.8.135:8080/v1/api/admin/product/category/sub/${idx}`, {
+        method: "DELETE",
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            if(res.code === 200){
+                console.log(res);
+                let todoSubLi = e.parentNode.parentNode;
+                let listSubUl = todoSubLi.parentNode;
+                todoSubLi.remove();
+                if (!listSubUl.hasChildNodes()) {
+                    let listSubLi = listSubUl.parentNode;
+                    listSubLi.remove();
+                }
+            } else {
+                alert("잠시 후 다시 시도해주세요");
+            }
+        });
+}
+
+window.onload = () => {
+    fetch(`http://121.145.8.135:8080/v1/api/product/category`, {
+        method: "GET",
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            if(res.code === 200){
+                console.log(res.content);
+                render(res.content);
+            } else {
+                alert("잠시 후 다시 시도해주세요");
+            }
+        });
 }
