@@ -196,7 +196,9 @@ function depthInputAdd(num) {
 
     let listSubUl = listSub.getElementsByClassName('list_sub_ul')[0];
 
-    let html = `<li id="todo_sub_li">
+    console.log(listSubUl);
+
+    let html = `<li class="todo_sub_li">
                             <input type="text" class="depth_input"/>
                             <button type="button" class="input__button" onclick="depthAdd(this)">
                                 <i class="fas fa-plus-circle"></i>
@@ -209,13 +211,11 @@ function depthInputAdd(num) {
 
 function depthAdd(e) {
     // console.log(e);
-    let parentDiv = e.parentNode;
-    let todoSubLi = parentDiv.parentNode;
-    // console.log(parentDiv)
-    let inputValue = parentDiv.getElementsByClassName('depth_input')[0].value;
+    let todoSubLi = e.parentNode;
+    let inputValue = todoSubLi.getElementsByClassName('depth_input')[0].value;
     // console.log(inputValue);
 
-    let html = `<li id="todo_sub_li">
+    let html = `<li class="todo_sub_li">
                     <div class="depth_text">${inputValue}</div>
                     <div class="modbtn">
                         <div class="modify_btn" onclick="depthModify(this)">수정하기</div>
