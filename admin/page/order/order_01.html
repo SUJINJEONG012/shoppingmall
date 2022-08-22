@@ -52,12 +52,7 @@
 
                         <li class="big-title "><i class="fas fa-shopping-cart"></i>주문관리</li>
                         <li class="active"><a href="./order_01.html">전체주문조회</a></li>
-                        <!-- <li><a href="./order_02.html">입금전관리</a></li>
-                        <li><a href="./order_03.html">상품준비중관리</a></li>
-                        <li><a href="./order_04.html">배송준비중관리</a></li>
-                        <li><a href="./order_05.html">배송중관리</a></li>
-                        <li><a href="./order_06.html">배송완료조회</a></li>
-                        <li><a href="./order_07.html">취소.교환.반품.환불관리</a></li> -->
+
                     </ul>
                 </div>
 
@@ -86,30 +81,26 @@
                                                 <input type="checkbox" name="chkall" value="1" id="chkall"
                                                     onclick="check_all(this.form)">
                                             </th>
+
                                             <th scope="col" id="th_ordnum" rowspan="2" colspan="2"><a
                                                     href="/gnuboard5/adm/shop_admin/orderlist.php?sort1=od_id&amp;sort2=asc&amp;page=1&amp;od_status=&amp;od_settle_case=&amp;od_misu=&amp;od_cancel_price=&amp;od_refund_price=&amp;od_receipt_point=&amp;od_coupon=&amp;fr_date=&amp;to_date=&amp;sel_field=od_id&amp;search=&amp;save_search=">주문번호</a>
                                             </th>
+
                                             <th scope="col" id="th_odrer">주문자</th>
                                             <th scope="col" id="th_odrertel">주문자전화</th>
                                             <th scope="col" id="th_recvr">받는분</th>
-                                            <th scope="col" rowspan="3">주문합계<br>선불배송비포함</th>
-                                            <th scope="col" rowspan="3">입금합계</th>
-                                            <th scope="col" rowspan="3">주문취소</th>
-                                            <th scope="col" rowspan="3">쿠폰</th>
-                                            <th scope="col" rowspan="3">미수금</th>
-                                            <th scope="col" rowspan="3">보기</th>
+
+
                                         </tr>
                                         <tr>
-                                            <th scope="col" id="th_odrid">회원ID</th>
+
                                             <th scope="col" id="th_odrcnt">주문상품수</th>
-                                            <th scope="col" id="th_odrall">누적주문수</th>
+
                                         </tr>
                                         <tr>
                                             <th scope="col" id="odrstat">주문상태</th>
                                             <th scope="col" id="odrpay">결제수단</th>
-                                            <th scope="col" id="delino">운송장번호</th>
-                                            <th scope="col" id="delicom">배송회사</th>
-                                            <th scope="col" id="delidate">배송일시</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
