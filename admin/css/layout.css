@@ -210,20 +210,22 @@
     min-height: 400px;
 }
 
+/* =================== 상품등록 ===================  */
+.prod_cate {
+    display: flex;
+}
 
-
+.prod_cate select {
+    width: 45%;
+    margin-right: 10px;
+    padding: 10px 40px;
+}
 
 /* =================== 상품분류 ===================  */
-.todoItem {
-    position: relative;
-}
 
-.todoItem .add {
-    display: none;
-}
-
-.todoItem:hover .add {
-    display: block;
+#group_cate {
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: 35px;
 }
 
 .main__title {
@@ -238,8 +240,8 @@
 }
 
 .main__title h1 {
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .add {
@@ -251,12 +253,34 @@
     display: block;
 }
 
-input {
-    padding: 7px 14px;
-    width: 70%;
-    border-radius: 4px;
-    border: 1px solid #000;
+.todoItem {
+    position: relative;
 }
+
+.todoItem .add {
+    display: none;
+}
+
+.todoItem:hover .add {
+    display: block;
+}
+
+.add-btn i {
+    font-size: 25px;
+}
+
+input.todoItem {
+    padding: 15px;
+    width: 70%;
+    font-size: 15px;
+    border: 1px solid #ccc;
+}
+
+button.input__button {
+    margin-left: 10px;
+    display: inline-block;
+}
+
 
 
 .todolist__wrap {
@@ -264,12 +288,35 @@ input {
 }
 
 .todolist__wrap li {
+    padding: 15px 30px;
     font-size: 19px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 30px;
+}
+
+
+.todolist__wrap li.todo_li {
+
+
     border-bottom: 1px dashed #d4d4d4;
+}
+
+input.depth_input {
+    padding: 15px;
+    width: 70%;
+    font-size: 15px;
+    border: 1px solid #ccc;
+}
+
+
+#todo__list .modbtn {
+    cursor: pointer;
+
+}
+
+.depAddbtn {
+    border: 1px solid #ccc;
 }
 
 .modbtn {
@@ -278,5 +325,6 @@ input {
 }
 
 .modbtn>div {
-    padding-left: 10px;
+    padding: 10px;
+    margin: 0 5px;
 }
