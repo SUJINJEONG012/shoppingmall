@@ -69,17 +69,7 @@
 
                                 </div>
 
-                                <div class="write_div">
-                                    <span class="sound_only">옵션</span>
-                                    <ul class="bo_v_option">
 
-                                        <li class="chk_box"><input type="checkbox" id="notice" name="notice"
-                                                class="selec_chk" value="1">
-                                            <label for="notice"><span></span>공지</label>
-                                        </li>
-
-                                    </ul>
-                                </div>
 
                                 <div class="bo_w_tit write_div">
                                     <label for="wr_subject" class="sound_only">제목<strong>필수</strong></label>
@@ -154,7 +144,7 @@
 
         const buttonEvent = document.getElementById('btn_submit');
 
-        buttonEvent.addEventListener('click', ()=>{
+        buttonEvent.addEventListener('click', () => {
             let title = document.getElementById("wr_subject").value;
             let content = myEditor.getData();
             let selectedFile = document.getElementById("bf_file_1").files[0];
@@ -169,7 +159,7 @@
             formData.append("content", content);
             formData.append("mainNotice", checked);
 
-            if(selectedFile === null || selectedFile === undefined){
+            if (selectedFile === null || selectedFile === undefined) {
                 // formData.append("file", new File());
             } else {
                 formData.append("file", selectedFile);
@@ -180,16 +170,16 @@
             fetch("http://121.145.8.135:8080/v1/api/admin/notice", {
                 method: "POST",
                 headers: {
-                    "Authorization" : `Bearer ${accessToken}`
+                    "Authorization": `Bearer ${accessToken}`
                 },
                 body: formData,
             })
                 .then((res) => res.json())
                 .then((res) => {
-                    if(res.code === 200){
+                    if (res.code === 200) {
                         console.log(res.content);
                     } else {
-                        if(res.status === 401){
+                        if (res.status === 401) {
                             alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요");
                             localStorage.removeItem('accessToken');
                             location.href = "../../../page/login.html";
