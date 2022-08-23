@@ -6,8 +6,8 @@ const main__titles = document.querySelector('.main__title');
 const add__btn = document.querySelector('.add-btn');
 const add = document.querySelector('.add');
 
-let groupCate = document.getElementById('group_cate').value;
-
+//let groupCate = document.getElementById('group_cate').value;
+//group_cate => search
 let inputButton = document.querySelector('.input__button');
 inputButton.addEventListener('click', addTodoSlom); /// TODO : 나중에 통신하는 버전으로 변경하기
 
@@ -106,12 +106,12 @@ function addTodoSlom() {
 
     const todoListUl = document.getElementById("todo__list");
 
-    let html = `<li id="todo_li_${index}">
+    let html = `<li class="todo_li" id="todo_li_${index}">
                     <div id="todo_text_${index}">${todo}</div>
                     <div class="modbtn">
-                        <div class="add_btn" id="depth_add_btn_${index}" onclick="depthInputAdd(${index})">추가하기</div>
-                        <div class="modify_btn" id="modify_btn_${index}" onclick="categoryModify(${index})">수정하기</div>
-                        <div class="delete_btn" id="delete_btn_${index}" onclick="categoryDelete(${index})">제거하기</div>
+                        <div class="depAddbtn" id="depth_add_btn_${index}" onclick="depthInputAdd(${index})">추가하기</div>
+                        <div class="depAddbtn" id="modify_btn_${index}" onclick="categoryModify(${index})">수정하기</div>
+                        <div class="depAddbtn" id="delete_btn_${index}" onclick="categoryDelete(${index})">제거하기</div>
                     </div>
                 </li>`;
     todoListUl.insertAdjacentHTML("beforeend", html);
@@ -298,7 +298,7 @@ function depthModifyCancel(todoSubLi, value) {
 let render = (category) => {
     const todoListUl = document.getElementById("todo__list");
 
-    for (const index in category){
+    for (const index in category) {
         console.log(category[index]);
         let html = `<li id="todo_li_${category[index].idx}">
                     <div id="todo_text_${category[index].idx}">${category[index].name}</div>
@@ -310,11 +310,11 @@ let render = (category) => {
                 </li>`;
         todoListUl.insertAdjacentHTML("beforeend", html);
 
-        if(category[index].subCategory.length !== 0){
+        if (category[index].subCategory.length !== 0) {
             const todoLi = document.getElementById(`todo_li_${category[index].idx}`);
-            for (const subIndex in category[index].subCategory){
+            for (const subIndex in category[index].subCategory) {
                 /// subIndex의 타입이 string
-                if(subIndex === '0'){
+                if (subIndex === '0') {
                     console.log('fdfdfd');
                     let html = `<li id="list_sub_${category[index].idx}">
                         <ul class="list_sub_ul" id="list_sub_ul_${category[index].idx}"></ul>
@@ -343,7 +343,7 @@ function addCategory() {
 
     const category = document.querySelector('.todoItem').value;
 
-    let data = {name : category}
+    let data = { name: category }
 
     fetch(`http://121.145.8.135:8080/v1/api/admin/product/category/main`, {
         method: "POST",
@@ -354,7 +354,7 @@ function addCategory() {
     })
         .then((res) => res.json())
         .then((res) => {
-            if(res.code === 200){
+            if (res.code === 200) {
                 console.log(res.content);
                 const todoListUl = document.getElementById("todo__list");
 
@@ -402,7 +402,7 @@ function modifyConfirmNetwork(idx) {
     let modifyInputValue = document.getElementById(`category_modify_input_${idx}`).value;
 
 
-    let data = {idx : idx, name : modifyInputValue}
+    let data = { idx: idx, name: modifyInputValue }
 
     console.log(data);
 
@@ -415,7 +415,7 @@ function modifyConfirmNetwork(idx) {
     })
         .then((res) => res.json())
         .then((res) => {
-            if(res.code === 200){
+            if (res.code === 200) {
                 console.log(res.content);
                 while (todoLi.hasChildNodes()) {
                     todoLi.removeChild(todoLi.firstChild);
@@ -457,12 +457,12 @@ function categoryDeleteNetwork(idx) {
     })
         .then((res) => res.json())
         .then((res) => {
-            if(res.code === 200){
+            if (res.code === 200) {
                 console.log(res);
                 let todoLi = document.getElementById(`todo_li_${idx}`);
                 todoLi.remove();
                 let listSub = document.getElementById(`list_sub_${idx}`);
-                if(listSub != null){
+                if (listSub != null) {
                     listSub.remove();
                 }
             } else {
@@ -505,7 +505,7 @@ function depthAddNetwork(idx) {
     let todoSubLi = document.getElementById(`todo_sub_li_${idx}`);
     let inputValue = todoSubLi.getElementsByClassName('depth_input')[0].value;
 
-    let data = {name : inputValue, categoryIdx : idx};
+    let data = { name: inputValue, categoryIdx: idx };
 
     fetch(`http://121.145.8.135:8080/v1/api/admin/product/category/sub`, {
         method: "POST",
@@ -516,7 +516,7 @@ function depthAddNetwork(idx) {
     })
         .then((res) => res.json())
         .then((res) => {
-            if(res.code === 200){
+            if (res.code === 200) {
                 console.log(res.content);
                 let html = `<li class="todo_sub_li" id="todo_sub_li_${res.content.idx}">
                     <div class="depth_text">${res.content.name}</div>
@@ -571,7 +571,7 @@ function depthModifyConfirmNetwork(todoSubLi, idx) {
     let modifyInputValue = todoSubLi.getElementsByClassName('depth_input')[0].value;
     console.log(modifyInputValue);
 
-    let data = {idx : idx, name : modifyInputValue};
+    let data = { idx: idx, name: modifyInputValue };
 
     fetch(`http://121.145.8.135:8080/v1/api/admin/product/category/sub`, {
         method: "PUT",
@@ -582,7 +582,7 @@ function depthModifyConfirmNetwork(todoSubLi, idx) {
     })
         .then((res) => res.json())
         .then((res) => {
-            if(res.code === 200){
+            if (res.code === 200) {
                 console.log(res.content);
                 while (todoSubLi.hasChildNodes()) {
                     todoSubLi.removeChild(todoSubLi.firstChild);
@@ -623,7 +623,7 @@ function depthDeleteNetwork(e, idx) {
     })
         .then((res) => res.json())
         .then((res) => {
-            if(res.code === 200){
+            if (res.code === 200) {
                 console.log(res);
                 let todoSubLi = e.parentNode.parentNode;
                 let listSubUl = todoSubLi.parentNode;
@@ -644,7 +644,7 @@ window.onload = () => {
     })
         .then((res) => res.json())
         .then((res) => {
-            if(res.code === 200){
+            if (res.code === 200) {
                 console.log(res.content);
                 render(res.content);
             } else {
