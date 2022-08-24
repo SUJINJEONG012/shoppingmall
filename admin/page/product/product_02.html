@@ -67,7 +67,7 @@
 
                                 <div class="prod_cate">
 
-                                    <select class="sel_cate" onchange="categoryChange(this)">
+                                    <select class="sel_cate" id="main_cate" onchange="categoryChange(this)">
                                         <option value="none">=== 대분류선택 ===</option>
                                         <option value="tshirt">티셔츠</option>
                                         <option value="mantoman">맨투맨</option>
@@ -81,7 +81,7 @@
                                     </select>
 
                                     <select id="type2" class="sel_cate">
-                                        <option>소분류 카테고리를선택해주세요</option>
+                                        <option>대분류 카테고리를 선택해주세요</option>
                                     </select>
 
                                 </div>
@@ -209,36 +209,41 @@
             let title = document.getElementById("wr_subject").value;
             let content = myEditor.getData();
             let selectedFile = document.getElementById("bf_file_1").files[0];
-            let checked = document.getElementById("notice").checked;
+            let categoryIdx = document.getElementById('type2').value;
             console.log(title);
             console.log(content);
             console.log(selectedFile);
-            console.log(checked);
+            console.log(categoryIdx);
+
+            let option = ["Beige", "Black"];
 
             let formData = new FormData();
-            formData.append("title", title);
+            formData.append("name", title);
             formData.append("content", content);
-            formData.append("mainNotice", checked);
+            formData.append("categoryIdx", categoryIdx);
 
-            if (selectedFile === null || selectedFile === undefined) {
-                // formData.append("file", new File());
-            } else {
+            option.forEach(e => {
+                formData.append("option", e);
+            });
+
+            if (selectedFile !== undefined) {
                 formData.append("file", selectedFile);
             }
 
             let accessToken = localStorage.getItem('accessToken');
 
-            fetch("http://121.145.8.135:8080/v1/api/admin/notice", {
+            fetch("http://121.145.8.135:8080/v1/api/admin/product", {
                 method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${accessToken}`
-                },
+                // headers: {
+                //     "Authorization": `Bearer ${accessToken}`
+                // },
                 body: formData,
             })
                 .then((res) => res.json())
                 .then((res) => {
                     if (res.code === 200) {
                         console.log(res.content);
+                        location.href = 'product_03.html';
                     } else {
                         if (res.status === 401) {
                             alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요");
@@ -253,34 +258,59 @@
 
         });
 
-        let write = () => {
-            // let title = document.getElementById("wr_subject").value;
-            // let content = document.getElementById("editor").value;
+        let categoryList;
 
-            // console.log(title);
-            // console.log(content);
-            // let data = {
-            //     username : username,
-            //     password : password
-            // }
-            //
-            // fetch("http://121.145.8.135:8080/login", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify(data),
-            // })
-            //     .then((res) => res.json())
-            //     .then((res) => {
-            //         if(res.code === 200){
-            //             // console.log(res.content.accessToken);
-            //             localStorage.setItem('accessToken', res.content.accessToken);
-            //             location.href = "../index.html";
-            //         } else {
-            //             alert("로그인에 실패했습니다. 다시 시도해주세요");
-            //         }
-            //     });
+        let categoryRender = (category, dom) => {
+            let html = `<option value="${category.idx}">${category.name}</option>`
+            dom.insertAdjacentHTML("beforeend", html);
+        }
+
+        let categorySelect = (e) => {
+            let subCate = document.getElementById('type2');
+            while (subCate.hasChildNodes()){
+                subCate.removeChild(subCate.firstChild);
+            }
+
+            if(e.value === 'none') {
+                categoryRender({idx : 0, name : '대분류 카테고리를 선택해주세요'}, subCate);
+                return;
+            }
+
+            let subCateList;
+
+            categoryList.forEach((category)=>{
+               if(parseInt(e.value) === category.idx){
+                   console.log("test");
+                   subCateList = category.subCategory;
+                   return false;
+               }
+            });
+
+            categoryRender({idx : 0, name : '선택해주세요'}, subCate);
+
+            subCateList.forEach((subCategory)=>{
+               categoryRender(subCategory, subCate);
+            });
+
+        }
+
+        window.onload = () => {
+            fetch("http://121.145.8.135:8080/v1/api/product/category", {
+                method: "GET",
+            })
+                .then((res) => res.json())
+                .then((res) => {
+                    if(res.code === 200){
+                        console.log(res.content);
+                        categoryList = res.content;
+                        let mainCate = document.getElementById('main_cate');
+                        res.content.forEach((category)=>{
+                           categoryRender(category, mainCate);
+                        });
+                    } else {
+                        alert('다시 시도해주세요');
+                    }
+                })
         }
     </script>
 

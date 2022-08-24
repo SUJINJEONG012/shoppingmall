@@ -9,7 +9,7 @@ const add = document.querySelector('.add');
 //let groupCate = document.getElementById('group_cate').value;
 //group_cate => search
 let inputButton = document.querySelector('.input__button');
-inputButton.addEventListener('click', addTodoSlom); /// TODO : 나중에 통신하는 버전으로 변경하기
+inputButton.addEventListener('click', addCategory); /// TODO : 나중에 통신하는 버전으로 변경하기
 
 
 // add__btn을 클릭하면  add__btn에  active 클래스를 토글
@@ -488,10 +488,10 @@ function depthInputAddNetwork(idx) {
 
     console.log(listSubUl);
 
-    let html = `<li class="todo_sub_li" id="todo_sub_li_${idx}">
+    let html = `<li class="todo_sub_li">
                             <input type="text" class="depth_input"/>
                             <div class="modbtn">
-                                <div class="btn_confirm" id="btn_confirm_${idx}" onclick="depthAddNetwork(${idx})">확인</div>
+                                <div class="btn_confirm" id="btn_confirm_${idx}" onclick="depthAddNetwork(${idx}, this)">확인</div>
                                 <div class="btn_cancel" id="btn_cancel_${idx}" onclick="depthCancelNetwork(this)">취소</div>
                             </div>
                 </li>`
@@ -500,9 +500,9 @@ function depthInputAddNetwork(idx) {
 }
 
 
-function depthAddNetwork(idx) {
+function depthAddNetwork(idx, e) {
 
-    let todoSubLi = document.getElementById(`todo_sub_li_${idx}`);
+    let todoSubLi = e.parentNode.parentNode;
     let inputValue = todoSubLi.getElementsByClassName('depth_input')[0].value;
 
     let data = { name: inputValue, categoryIdx: idx };
