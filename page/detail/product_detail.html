@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
     <link rel="icon" type="image/png" sizes="32x32" href="../../images/common/favicon.png">
     <link rel="stylesheet" href="../../css/reset.css">
@@ -79,10 +80,10 @@
                         <!--  -->
                         <div class="infoArea">
 
-<!--                            <h2 class="name" id="name">Epine Wrap OPS (2color)</h2>-->
-                            <h2 class="name" id="name"></h2>
-<!--                            <p class="price" id="price">59,000 won</p>-->
-                            <p class="price" id="price"></p>
+
+                            <h2 class="deProdName" id="name" lang="en"></h2>
+
+                            <p class="deProdPrice" id="price" lang="en"></p>
 
 
                             <div class="option">
@@ -91,26 +92,19 @@
 
                                 <select name="language" onchange="selectOption(this)" id="option_list">
                                     <option value="0">선택해주세요</option>
-<!--                                    <option value="한국어">Beige</option>-->
-<!--                                    <option value="영어">Black</option>-->
+
                                 </select>
                             </div>
 
-                            <!-- 결과값 나오는 -->
-                            <!--                                ==선택한부분 표시-->
-                            <!--                                <h2 class="name">Epine Wrap OPS (2color)-->
-                            <!--                                </h2>-->
-                            <!--                                <p>Beige</p>-->
-                            <!--                                1개 + - 삭제 표시-->
-                            <!--                                <p class="price">59,000 won</p>-->
 
-                            <!--                                ==선택한부분 표시-->
-                            <div class="result" id="result"></div>
+                            <div class="deProdresult" id="result">
+
+                            </div>
 
 
-                            <div class="total">
+                            <div class="deProdtotal">
                                 <h2>총 상품금액(수량)</h2>
-                                <div id="total_price">0 won <span id="total_count">(0개)</span></div>
+                                <div id="total_price" lang="en">0 won <span id="total_count" lang="en">(0개)</span></div>
                             </div>
 
 
@@ -132,19 +126,19 @@
 </body>
 <script>
     let dummyData = {
-        idx : 1,
-        name : "Epine Wrap OPS (2color)",
-        option : [
+        idx: 1,
+        name: "Epine Wrap OPS (2color)",
+        option: [
             {
                 idx: 1,
                 name: "Beige"
             },
             {
                 idx: 2,
-                name : "Black"
+                name: "Black"
             }
         ],
-        price : 59000,
+        price: 59000,
     }
 
     let selectOptionObj = [];
@@ -153,47 +147,47 @@
         document.getElementById("name").innerText = dummyData.name;
         document.getElementById("price").innerText = `${dummyData.price.toLocaleString()} won`;
         let optionList = document.getElementById("option_list");
-        dummyData.option.forEach((e)=>{
-           let html = `<option value="${e.idx}">${e.name}</option>`;
-           optionList.insertAdjacentHTML("beforeend", html);
+        dummyData.option.forEach((e) => {
+            let html = `<option value="${e.idx}">${e.name}</option>`;
+            optionList.insertAdjacentHTML("beforeend", html);
         });
     }
 
-    function selectOption(target){
-        if(target.value === 0) return;
+    function selectOption(target) {
+        if (target.value === 0) return;
         console.log(target.options[target.selectedIndex].text);
 
         let resultView = document.getElementById('result');
-        if (!resultView.hasChildNodes()){
-            selectOptionObj.push({idx : parseInt(target.value), count : 1});
-            let html = `<div id="select_option_div_${target.value}">
-                            <p id="select_option_${target.value}">${target.options[target.selectedIndex].text}</p>
-                            <span>
-                                <button type="button" onclick="countPlus(${target.value})">+</button>
-                                <div id="option_count_${target.value}">1</div>
-                                <button type="button" onclick="countMinus(${target.value})">-</button>
-                                <button type="button" onclick="remove(${target.value})">삭제</button>
-                            </span>
+        if (!resultView.hasChildNodes()) {
+            selectOptionObj.push({ idx: parseInt(target.value), count: 1 });
+            let html = `<div id="select_option_div_${target.value}" class="resultProdWrap">
+                            <p lang="en" id="select_option_${target.value}">${target.options[target.selectedIndex].text}</p>
+                            <div class="detail-count"> 
+                                <button type="button" onclick="countPlus(${target.value})"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                <div lang="en" class="count_Num" id="option_count_${target.value}">1</div>
+                                <button type="button" onclick="countMinus(${target.value})"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="delete" onclick="remove(${target.value})">삭제</button>
+                            </div>
                         </div>`;
             resultView.insertAdjacentHTML("beforeend", html);
         } else {
             let selectOption = document.getElementById(`select_option_${target.value}`);
 
-            if(selectOption == null){
-                selectOptionObj.push({idx : parseInt(target.value), count : 1});
-                let html = `<div id="select_option_div_${target.value}">
-                                <p id="select_option_${target.value}">${target.options[target.selectedIndex].text}</p>
-                                <span>
-                                    <button type="button" onclick="countPlus(${target.value})">+</button>
-                                    <div id="option_count_${target.value}">1</div>
-                                    <button type="button" onclick="countMinus(${target.value})">-</button>
-                                    <button type="button" onclick="remove(${target.value})">삭제</button>
-                                </span>
+            if (selectOption == null) {
+                selectOptionObj.push({ idx: parseInt(target.value), count: 1 });
+                let html = `<div id="select_option_div_${target.value}" class="resultProdWrap">
+                                <p lang="en" id="select_option_${target.value}">${target.options[target.selectedIndex].text}</p>
+                                <div class="detail-count"> 
+                                    <button type="button" onclick="countPlus(${target.value})"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    <div lang="en" class="count_Num" id="option_count_${target.value}">1</div>
+                                    <button type="button" onclick="countMinus(${target.value})"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                    <button type="button" class="delete" onclick="remove(${target.value})">삭제</button>
+                                </div>
                             </div>`;
                 resultView.insertAdjacentHTML("beforeend", html);
             } else {
-                for (let index in selectOptionObj){
-                    if (selectOptionObj[index].idx === parseInt(target.value)){
+                for (let index in selectOptionObj) {
+                    if (selectOptionObj[index].idx === parseInt(target.value)) {
                         selectOptionObj[index].count++;
                         break;
                     }
@@ -205,7 +199,7 @@
         }
         console.log("총계산");
         let totalCount = 0;
-        for (let index in selectOptionObj){
+        for (let index in selectOptionObj) {
             totalCount = totalCount + selectOptionObj[index].count;
         }
         console.log(totalCount);
@@ -216,33 +210,11 @@
         totalPriceDom.innerHTML = `${totalPrice.toLocaleString()} won <span>(${totalCount}개)</span>`;
     }
 
-    function countPlus(idx){
-        selectOptionObj.forEach((e)=>{
-            console.log(typeof e.idx);
-           if (e.idx === idx){
-               e.count ++;
-               document.getElementById(`option_count_${idx}`).innerText = e.count;
-               return false;
-           }
-        });
-
-        let totalCount = 0;
-
+    function countPlus(idx) {
         selectOptionObj.forEach((e) => {
-           totalCount = totalCount + e.count;
-        });
-
-        let totalPrice = dummyData.price * totalCount;
-
-        let totalPriceDom = document.getElementById('total_price');
-        totalPriceDom.innerHTML = `${totalPrice.toLocaleString()} won <span>(${totalCount}개)</span>`;
-    }
-
-    function countMinus(idx){
-        selectOptionObj.forEach((e)=>{
-            if (e.idx === idx){
-                if (e.count === 1) return false;
-                e.count --;
+            console.log(typeof e.idx);
+            if (e.idx === idx) {
+                e.count++;
                 document.getElementById(`option_count_${idx}`).innerText = e.count;
                 return false;
             }
@@ -260,9 +232,31 @@
         totalPriceDom.innerHTML = `${totalPrice.toLocaleString()} won <span>(${totalCount}개)</span>`;
     }
 
-    function remove(idx){
+    function countMinus(idx) {
+        selectOptionObj.forEach((e) => {
+            if (e.idx === idx) {
+                if (e.count === 1) return false;
+                e.count--;
+                document.getElementById(`option_count_${idx}`).innerText = e.count;
+                return false;
+            }
+        });
+
+        let totalCount = 0;
+
+        selectOptionObj.forEach((e) => {
+            totalCount = totalCount + e.count;
+        });
+
+        let totalPrice = dummyData.price * totalCount;
+
+        let totalPriceDom = document.getElementById('total_price');
+        totalPriceDom.innerHTML = `${totalPrice.toLocaleString()} won <span>(${totalCount}개)</span>`;
+    }
+
+    function remove(idx) {
         document.getElementById(`select_option_div_${idx}`).remove();
-        selectOptionObj = selectOptionObj.filter((e)=> e.idx !== idx);
+        selectOptionObj = selectOptionObj.filter((e) => e.idx !== idx);
         let totalCount = 0;
 
         selectOptionObj.forEach((e) => {
@@ -275,4 +269,5 @@
         totalPriceDom.innerHTML = `${totalPrice.toLocaleString()} won <span>(${totalCount}개)</span>`;
     }
 </script>
+
 </html>
