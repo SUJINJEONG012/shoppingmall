@@ -8,16 +8,16 @@
     <title>Shop</title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="../../images/common/favicon.png">
-    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
 
-    <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/board.css">
-    <link rel="stylesheet" href="../../css/shop.css">
+    <link rel="stylesheet" type="text/css" href="../../css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../../css/board.css">
+    <link rel="stylesheet" type="text/css" href="../../css/shop.css">
 
     <!-- <script src="./js/main.js" defer></script> -->
 
 
-    <script src="../../js/detail.js" defer></script>
+    <script src="/js/detail.js" defer></script>
 
 
 </head>
@@ -48,7 +48,7 @@
                         <nav class="header-menu">
                             <ul class="">
                                 <li class="menu-list active"><a href="./brand.html" lang="en">Brand</a></li>
-                                <li class="menu-list"><a href="./shop.html" lang="en">Shop</a></li>
+                                <li class="menu-list"><a href="../shop.html" lang="en">Shop</a></li>
                                 <li class="menu-list"><a href="./notice.html" lang="en" s>Notice</a></li>
                             </ul>
                         </nav>
@@ -67,10 +67,10 @@
                 <!-- 상품상세 디테일페이지 -->
                 <div class="detailArea">
 
-                    <div class="thumbnail-list detail-img">
-                        <a href="./products/product_detail.html">
-                            <img src="../../../images/shop/1.jpg" alt="의류옷">
-                        </a>
+                    <div class="thumbnail-list detail-img" id="detail_img">
+<!--                        <a href="./products/product_detail.html">-->
+<!--                            <img src="../../../images/shop/1.jpg" alt="의류옷">-->
+<!--                        </a>-->
                     </div>
 
 
@@ -115,9 +115,12 @@
 
 
                         </div>
-
                     </div>
                     <!--  -->
+
+                </div>
+                <div id="content">
+
                 </div>
             </div>
 
@@ -147,20 +150,58 @@
         price : 59000,
     }
 
+    let productDetailObj;
     let selectOptionObj = [];
 
     window.onload = () => {
-        document.getElementById("name").innerText = dummyData.name;
-        document.getElementById("price").innerText = `${dummyData.price.toLocaleString()} won`;
+        // document.getElementById("name").innerText = dummyData.name;
+        // document.getElementById("price").innerText = `${dummyData.price.toLocaleString()} won`;
+        // let optionList = document.getElementById("option_list");
+        // dummyData.option.forEach((e)=>{
+        //    let html = `<option value="${e.idx}">${e.name}</option>`;
+        //    optionList.insertAdjacentHTML("beforeend", html);
+        // });
+
+        let idx = new URLSearchParams(location.search).get('idx');
+
+        console.log(idx);
+
+        fetch(`http://121.145.8.135:8080/v1/api/product/${idx}`, {
+            method: "GET",
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                if(res.code === 200){
+                    console.log(res.content);
+                    productDetailObj = res.content;
+                    renderDetail(res.content);
+                } else {
+                    alert("잠시 후 다시 시도해주세요");
+                }
+            });
+    }
+
+    function renderDetail(item){
+        // detail 이미지
+        let detailImg = document.getElementById('detail_img');
+        let imgHtml = `<img src="${item.fileDTO.files[0].url}" alt="의류옷">`;
+        detailImg.insertAdjacentHTML('beforeend', imgHtml);
+
+        // 상품 설명 렌더링
+        document.getElementById("name").innerText = item.name;
+        document.getElementById("price").innerText = `${item.price.toLocaleString()} won`;
+
         let optionList = document.getElementById("option_list");
-        dummyData.option.forEach((e)=>{
-           let html = `<option value="${e.idx}">${e.name}</option>`;
-           optionList.insertAdjacentHTML("beforeend", html);
+        item.optionDTO.options.forEach((e)=>{
+            let html = `<option value="${e.idx}">${e.name}</option>`;
+            optionList.insertAdjacentHTML("beforeend", html);
         });
+
+        document.getElementById("content").innerHTML = item.content;
     }
 
     function selectOption(target){
-        if(target.value === 0) return;
+        if(target.value == 0) return;
         console.log(target.options[target.selectedIndex].text);
 
         let resultView = document.getElementById('result');
@@ -209,7 +250,7 @@
             totalCount = totalCount + selectOptionObj[index].count;
         }
         console.log(totalCount);
-        let totalPrice = dummyData.price * totalCount;
+        let totalPrice = productDetailObj.price * totalCount;
         console.log(totalPrice);
 
         let totalPriceDom = document.getElementById('total_price');
@@ -232,7 +273,7 @@
            totalCount = totalCount + e.count;
         });
 
-        let totalPrice = dummyData.price * totalCount;
+        let totalPrice = productDetailObj.price * totalCount;
 
         let totalPriceDom = document.getElementById('total_price');
         totalPriceDom.innerHTML = `${totalPrice.toLocaleString()} won <span>(${totalCount}개)</span>`;
@@ -254,7 +295,7 @@
             totalCount = totalCount + e.count;
         });
 
-        let totalPrice = dummyData.price * totalCount;
+        let totalPrice = productDetailObj.price * totalCount;
 
         let totalPriceDom = document.getElementById('total_price');
         totalPriceDom.innerHTML = `${totalPrice.toLocaleString()} won <span>(${totalCount}개)</span>`;
@@ -269,7 +310,7 @@
             totalCount = totalCount + e.count;
         });
 
-        let totalPrice = dummyData.price * totalCount;
+        let totalPrice = productDetailObj.price * totalCount;
 
         let totalPriceDom = document.getElementById('total_price');
         totalPriceDom.innerHTML = `${totalPrice.toLocaleString()} won <span>(${totalCount}개)</span>`;

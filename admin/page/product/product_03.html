@@ -60,34 +60,59 @@
                     <div class="item-area">
 
                         <div class="item-cont store">
-                            <h2 class="title">상품목록</h2>
-
+                            <h2 class="title">게시물 관리</h2>
                             <table>
                                 <caption>기본정보 설정</caption>
-                                <tbody>
-                                    <tr>
-                                        <th>쇼핑몰명</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>관리자명</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>대표 휴대전화</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>대표 이메일</th>
-                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">
-                                        </td>
-                                    </tr>
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="40%">
+                                    <col width="25%">
+                                    <col width="25%">
+                                    <col width="25%">
+                                </colgroup>
 
+                                <thead>
+                                <tr>
+                                    <th lang="en">No.</th>
+                                    <th>상품명</th>
+                                    <th>옵션</th>
+                                    <th>가격</th>
+                                    <th>등록일</th>
+                                </tr>
+                                </thead>
+
+                                <tbody id="product_tb">
+
+                                <!--                                    <tr>-->
+                                <!--                                        <td headers="mb_list_chk" class="td_chk" rowspan="2">-->
+                                <!--                                            <input type="checkbox" name="chk[]" value="0" id="chk_0">-->
+                                <!--                                        </td>-->
+                                <!--                                    </tr>-->
+
+                                <!--                                    <tr>-->
+                                <!--                                        <td>안젤라</td>-->
+                                <!--                                        <td><a href="" lang="en">peekaboo32@naver.com</a> </td>-->
+                                <!--                                        <td lang="en">010-1233-5678</td>-->
+                                <!--                                        <td lang="en">부산광역시 수영구 광안동 90-센텀스카이비즈 1209호</td>-->
+                                <!--                                    </tr>-->
+
+                                <!--                                    <tr>-->
+                                <!--                                        <td headers="mb_list_chk" class="td_chk" rowspan="2">-->
+                                <!--                                            <input type="checkbox" name="chk[]" value="0" id="chk_0">-->
+                                <!--                                        </td>-->
+                                <!--                                    </tr>-->
+
+                                <!--                                    <tr>-->
+                                <!--                                        <td>안젤라</td>-->
+                                <!--                                        <td lang="en">peekaboo32@naver.com</td>-->
+                                <!--                                        <td lang="en">010-1233-5678</td>-->
+                                <!--                                        <td lang="en">부산광역시 수영구 광안동 90-센텀스카이비즈 1209호</td>-->
+                                <!--                                    </tr>-->
                                 </tbody>
+
                             </table>
+
+
                         </div>
                         <!-- 01 -->
 
@@ -96,13 +121,104 @@
                 </div>
 
             </div>
+<!--            <div class="content">-->
+<!--                <div class="cont-inner">-->
+<!--                    <div class="item-area">-->
+
+<!--                        <div class="item-cont store">-->
+<!--                            <h2 class="title">상품목록</h2>-->
+
+<!--                            <table>-->
+<!--                                <caption>기본정보 설정</caption>-->
+<!--                                <tbody>-->
+<!--                                    <tr>-->
+<!--                                        <th>쇼핑몰명</th>-->
+<!--                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <th>관리자명</th>-->
+<!--                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <th>대표 휴대전화</th>-->
+<!--                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <th>대표 이메일</th>-->
+<!--                                        <td> <input type="text" name="shopping_mall" value="기본 쇼핑몰" class="input">-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+
+<!--                                </tbody>-->
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; 01 &ndash;&gt;-->
+
+
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
             <!-- content -->
 
         </div>
         <!-- inner -->
     </div>
     <!-- container-wrap -->
+    <script>
+        let page = 0;
+        let first = false;
+        let last = false;
+        let totalPages = 0;
 
+        window.onload = () => {
+            fetch(`http://121.145.8.135:8080/v1/api/product?page=${page}`, {
+                method: "GET",
+            })
+                .then((res) => res.json())
+                .then((res) => {
+                    if(res.code === 200){
+                        console.log(res.content);
+                        console.log(res.content.content);
+                        page = res.content.number;
+                        first = res.content.first;
+                        last = res.content.last;
+                        totalPages = res.content.totalPages;
+                        res.content.content.forEach((e)=>{
+                            itemLoading(e);
+                        });
+
+                    } else {
+                        alert("잠시 후 다시 시도해주세요");
+                    }
+                });
+        }
+
+        const itemLoading = (item) => {
+            let productTb = document.getElementById('product_tb');
+
+            let optionList = item.optionDTO.options.map(value => value.name);
+
+            let html = `<tr>
+                                        <td headers="mb_list_chk" class="td_chk" rowspan="2">
+                                            <input type="checkbox" name="chk[]" value="0" id="chk_${item.idx}">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>${item.name}</td>
+                                        <td lang="en">
+                                            ${optionList.join(', ')}</td>
+                                        <td lang="en">${item.price.toLocaleString()}원</td>
+                                        <td lang="en">${item.createDate}</td>
+                                    </tr>`;
+            productTb.insertAdjacentHTML("beforeend", html);
+        }
+
+    </script>
 
 
 

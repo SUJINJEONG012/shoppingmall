@@ -147,16 +147,13 @@
             let title = document.getElementById("wr_subject").value;
             let content = myEditor.getData();
             let selectedFile = document.getElementById("bf_file_1").files[0];
-            let checked = document.getElementById("notice").checked;
             console.log(title);
             console.log(content);
             console.log(selectedFile);
-            console.log(checked);
 
             let formData = new FormData();
             formData.append("title", title);
             formData.append("content", content);
-            formData.append("mainNotice", checked);
 
             if (selectedFile === null || selectedFile === undefined) {
                 // formData.append("file", new File());

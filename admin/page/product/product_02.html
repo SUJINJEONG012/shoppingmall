@@ -67,16 +67,16 @@
 
                                 <div class="prod_cate">
 
-                                    <select class="sel_cate" id="main_cate" onchange="categoryChange(this)">
+                                    <select class="sel_cate" id="main_cate" onchange="categorySelect(this)">
                                         <option value="none">=== 대분류선택 ===</option>
-                                        <option value="tshirt">티셔츠</option>
-                                        <option value="mantoman">맨투맨</option>
-                                        <option value="hood">후디</option>
-                                        <option value="outer">아우터</option>
-                                        <option value="pant">바지</option>
-                                        <option value="dress">원피스/스커트</option>
-                                        <option value="blouse">셔츠/블라우스</option>
-                                        </option>
+<!--                                        <option value="tshirt">티셔츠</option>-->
+<!--                                        <option value="mantoman">맨투맨</option>-->
+<!--                                        <option value="hood">후디</option>-->
+<!--                                        <option value="outer">아우터</option>-->
+<!--                                        <option value="pant">바지</option>-->
+<!--                                        <option value="dress">원피스/스커트</option>-->
+<!--                                        <option value="blouse">셔츠/블라우스</option>-->
+<!--                                        </option>-->
 
                                     </select>
 
@@ -142,21 +142,15 @@
                                         <input type="text" name="wr_subject" value="" id="wr_subject" required=""
                                             class="frm_input full_input required" size="50" maxlength="255"
                                             placeholder="제목">
+                                        <input type="text" name="wr_price" id="wr_price" placeholder="가격(원)">
 
                                     </div>
 
                                 </div>
 
-
-
                                 <div id="editor">
                                     <p>This is some sample content.</p>
                                 </div>
-
-
-
-
-
 
 
                                 <div class="file_wr write_div">
@@ -192,10 +186,18 @@
     <!-- 에디터 -->
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
     <script>
+
+        /**
+         * 에디터 관련
+         * */
         let myEditor
 
         ClassicEditor
-            .create(document.querySelector('#editor'))
+            .create(document.querySelector('#editor'),{
+                ckfinder:{
+                    uploadUrl: 'http://121.145.8.135:8080/v1/api/file/image'
+                }
+            })
             .then(editor => {
                 myEditor = editor;
             })
@@ -203,6 +205,23 @@
                 console.error(error);
             });
 
+        /**
+         * 입력한 숫자에 콤마 넣기
+         * */
+        const priceInput = document.getElementById('wr_price');
+        priceInput.addEventListener('keyup', ev => {
+           let value = ev.target.value;
+           value = Number(value.replaceAll(',',''));
+           if(isNaN(value)){
+               priceInput.value = 0;
+           } else {
+               priceInput.value = value.toLocaleString();
+           }
+        });
+
+        /**
+         * 상품 등록
+         * */
         const buttonEvent = document.getElementById('btn_submit');
 
         buttonEvent.addEventListener('click', () => {
@@ -210,10 +229,16 @@
             let content = myEditor.getData();
             let selectedFile = document.getElementById("bf_file_1").files[0];
             let categoryIdx = document.getElementById('type2').value;
+            let price = document.getElementById('wr_price').value;
+            price = Number(price.replaceAll(',',''));
+
+            console.log(price);
             console.log(title);
             console.log(content);
             console.log(selectedFile);
             console.log(categoryIdx);
+
+            if(isNaN(price)) return;
 
             let option = ["Beige", "Black"];
 
@@ -221,6 +246,7 @@
             formData.append("name", title);
             formData.append("content", content);
             formData.append("categoryIdx", categoryIdx);
+            formData.append("price", price);
 
             option.forEach(e => {
                 formData.append("option", e);
@@ -258,6 +284,12 @@
 
         });
 
+
+        /**
+         * categoryList : 대분류 리스트
+         * categoryRender : 카테고리 view 렌더링
+         * categorySelect : 대분류 선택했을때 해당 대분류에 맞는 소분류 카테고리 리스트 보여주기
+         * */
         let categoryList;
 
         let categoryRender = (category, dom) => {
@@ -280,7 +312,6 @@
 
             categoryList.forEach((category)=>{
                if(parseInt(e.value) === category.idx){
-                   console.log("test");
                    subCateList = category.subCategory;
                    return false;
                }
@@ -294,6 +325,10 @@
 
         }
 
+        /**
+         * 페이지 보여줄 때 필요한 데이터 받아오기
+         * 상품등록 페이지에서는 카테고리 리스트가 필요
+         * */
         window.onload = () => {
             fetch("http://121.145.8.135:8080/v1/api/product/category", {
                 method: "GET",
